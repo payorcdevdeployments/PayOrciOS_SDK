@@ -1,6 +1,6 @@
 {
   "name": "PayOrciOS_SDK",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "A short description of PayOrciOS_SDK.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/ramanocs1145/PayOrciOS_SDK",
@@ -13,10 +13,12 @@
   },
   "source": {
     "git": "https://github.com/ramanocs1145/PayOrciOS_SDK.git",
-    "tag": "0.1.0"
+    "branch": "main"
   },
   "platforms": {
     "ios": "12.0"
   },
-  "source_files": "PayOrciOS_SDK/Classes/**/*"
+  "source_files": "PayOrciOS_SDK/Classes/**/*",
+  "swift_versions": "5.0",
+  "swift_version": "5.0"
 }

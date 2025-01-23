@@ -7,11 +7,11 @@ PODS:
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
-  - PayOrciOS_SDK (0.1.0)
+  - PayOrciOS_SDK (1.0.0)
 
 DEPENDENCIES:
   - KRProgressHUD
-  - Moya (~> 15.0)
+  - Moya
   - PayOrciOS_SDK (from `../`)
 
 SPEC REPOS:
@@ -30,8 +30,8 @@ SPEC CHECKSUMS:
   KRActivityIndicatorView: c5c503bf56e54834382dd926b64ff47287ca0006
   KRProgressHUD: d0fb4e72428d312eb6966e84c543ea58fb1efbc7
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
-  PayOrciOS_SDK: d96429aec3722593aec4f702c8d1f878cd02d3dd
+  PayOrciOS_SDK: 712d3207d2a221493408e2819afd854ef3a1308e
 
-PODFILE CHECKSUM: edab08a07c097b7ec609ad3f76aacb9a012d100f
+PODFILE CHECKSUM: f1e3f8a2aaa10a16e0576a5a6e971459aef13d84
 
 COCOAPODS: 1.16.2
