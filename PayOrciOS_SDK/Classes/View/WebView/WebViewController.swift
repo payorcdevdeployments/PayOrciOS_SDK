@@ -6,11 +6,15 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     private let webView: WKWebView
     private let urlString: String
     
-    init(urlString: String) {
+    public init(urlString: String) {
         self.urlString = urlString
         let webViewConfiguration = WKWebViewConfiguration()
         let webpagePreferences = WKWebpagePreferences()
-        webpagePreferences.allowsContentJavaScript = true // Enable JavaScript
+        if #available(iOS 14.0, *) {
+            webpagePreferences.allowsContentJavaScript = true
+        } else {
+            // Fallback on earlier versions
+        } // Enable JavaScript
         webViewConfiguration.defaultWebpagePreferences = webpagePreferences
 
         self.webView = WKWebView(frame: .zero, configuration: webViewConfiguration)

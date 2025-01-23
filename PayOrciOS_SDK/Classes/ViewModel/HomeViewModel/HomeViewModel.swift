@@ -16,6 +16,11 @@ public class HomeViewModel {
     
     var errorMessage: String?
     
+    // Make the initializer public
+    public init() {
+        // Initialization code
+    }
+    
     // Completion handler to pass success or failure response
     public func fetchCreatedOrderDetails(completion: @escaping (Result<CreateOrdersSuccessResponse, Error>) -> Void) {
         
