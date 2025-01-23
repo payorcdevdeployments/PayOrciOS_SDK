@@ -1,6 +1,5 @@
 # PayOrciOS_SDK
 
-[![CI Status](https://img.shields.io/travis/ramanocs1145/PayOrciOS_SDK.svg?style=flat)](https://travis-ci.org/ramanocs1145/PayOrciOS_SDK)
 [![Version](https://img.shields.io/cocoapods/v/PayOrciOS_SDK.svg?style=flat)](https://cocoapods.org/pods/PayOrciOS_SDK)
 [![License](https://img.shields.io/cocoapods/l/PayOrciOS_SDK.svg?style=flat)](https://cocoapods.org/pods/PayOrciOS_SDK)
 [![Platform](https://img.shields.io/cocoapods/p/PayOrciOS_SDK.svg?style=flat)](https://cocoapods.org/pods/PayOrciOS_SDK)
