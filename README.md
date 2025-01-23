@@ -21,7 +21,7 @@ pod 'PayOrciOS_SDK'
 
 ## Author
 
-ramanocs1145, p.ramanathan2971@gmail.com
+ramanocs1145.
 
 ## License
 
