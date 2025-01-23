@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create a UIWindow instance
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Create the view controller you want to set as root
+        let rootViewController = ViewController() // Replace with your view controller
+        
+        // Embed in a navigation controller (if needed)
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        
+        // Set the root view controller
+        window?.rootViewController = navigationController
+        
+        // Make the window visible
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
