@@ -155,7 +155,7 @@ public struct CreateOrdersSuccessResponse: Codable {
     let orderDreationDate: String?
     let amount: String?
     let paymentLink: String?
-    let iframeLink: String?
+    public var iframeLink: String?
 
     enum CodingKeys: String, CodingKey {
         case status

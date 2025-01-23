@@ -8,24 +8,81 @@
 
 import UIKit
 import PayOrciOS_SDK
+import KRProgressHUD
 
 class ViewController: UIViewController {
     
     private let homeViewModel = PayOrciOS_SDK.HomeViewModel()
-
+    
+    private let fetchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .purple
+        button.setTitle("Fetch Orders", for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .brown
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        view.backgroundColor = .purple
         PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://nodeserver.payorc.com/api/", apiVersion: "v1", merchantKey: "test-JR11KGG26DM", merchantSecret: "sec-DC111UM26HQ", environment: "test")
-        
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+
+    private func setupUI() {
+        fetchButton.addTarget(self, action: #selector(fetchUserData), for: .touchUpInside)
+
+        view.addSubview(fetchButton)
+        
+        NSLayoutConstraint.activate([
+            
+            fetchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            fetchButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            fetchButton.widthAnchor.constraint(equalToConstant: 200),
+            fetchButton.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+        
+    @objc
+    private func fetchUserData() {
+        homeViewModel.fetchCreatedOrderDetails { [weak self] (result: Result<CreateOrdersSuccessResponse, Error>) in
+            self?.hideLoader()  // Hide the loader after completion
+
+            switch result {
+            case .success(let ordersSuccessResponse):
+                guard let iframeLink = ordersSuccessResponse.iframeLink else {
+                    self?.showAlert(message: "Invalid response: iframe link not found.")
+                    return
+                }
+                self?.navigateToWebView(with: iframeLink)
+
+            case .failure(let error):
+                self?.showAlert(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func navigateToWebView(with urlString: String) {
+        let webViewController = WebViewController(urlString: urlString)
+        navigationController?.pushViewController(webViewController, animated: true)
+    }
+    
+    private func showAlert(message: String) {
+        PayOrciOS_SDK.AlertHelper.showAlert(on: self, message: message)
+    }
+
+    private func showLoader() {
+        KRProgressHUD.showOn(self).show()
+    }
+
+    private func hideLoader() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            KRProgressHUD.dismiss()
+        }
     }
 
 }
