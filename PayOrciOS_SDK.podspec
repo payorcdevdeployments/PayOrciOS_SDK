@@ -41,5 +41,9 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   
   s.swift_version = '5.0'
+  
+  # Add multiple dependencies here
+  s.dependency 'Moya', '~> 15.0'
+  s.dependency 'KRProgressHUD'
 
 end

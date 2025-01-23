@@ -20,5 +20,13 @@
   },
   "source_files": "PayOrciOS_SDK/Classes/**/*",
   "swift_versions": "5.0",
+  "dependencies": {
+    "Moya": [
+      "~> 15.0"
+    ],
+    "KRProgressHUD": [
+
+    ]
+  },
   "swift_version": "5.0"
 }

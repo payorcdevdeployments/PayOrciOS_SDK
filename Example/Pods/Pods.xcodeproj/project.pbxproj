@@ -8,42 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		00D69AD872EF460A7A9715B345A1C31B /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D7296D5AF303BFB9581A47D080383E /* Protected.swift */; };
-		00E9B2FAE9AE44BC8325DD51D3F6EF7F /* CreateOrdersPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EBA92B154ED32C3412B2DB2A57054E /* CreateOrdersPost.swift */; };
+		02B8094B9EECF2D26766B43BC4BFF1BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		047B5E7719C01E0B8F74EFF450844D54 /* MoyaProvider+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8A1648BD4166F6DD379DC769758A8 /* MoyaProvider+Internal.swift */; };
 		06ADE0CA0CA40A2843F401E9EB096638 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		074387D1012BC0F5C90B358F27A1331F /* RequestCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E7AA5A0B942C4169257D564B4A118 /* RequestCompression.swift */; };
 		080B4BDB8D79EA83EAFBE549FF6C9F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		080FBC62B74BF059220234CB58B07DF7 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936E1AD805F7BF9D6E20DE86DE4C4B49 /* Image.swift */; };
 		083B0B494C5F6B69924BB36E3850D23E /* RequestTaskMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9793DD2A1ADF9B21DABBBD002C985F52 /* RequestTaskMap.swift */; };
-		08E91490E645D2C8BB82C869FC293FE9 /* CheckKeysSecretPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4C7A8D905DB4C5D28C129D0B30E38C /* CheckKeysSecretPost.swift */; };
 		0CF8BA66E12078120DB863307972EEB4 /* MultiTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECE8D33E49A79FD05ACC15BEB76456 /* MultiTarget.swift */; };
 		0DC813E62FCEF6C6C3009180D7790BFE /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CD4F0FDF8FAFFDC8EBD2B7626838F5 /* Result+Alamofire.swift */; };
-		0F00335851B79FF195523D994C252C22 /* PayOrciOS_SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F022E1DF8ABC05EFFCB54C8A6622427C /* PayOrciOS_SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		123AD39A60CEBC746252CAE22D4A1003 /* Pods-PayOrciOS_SDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEB136597A0BCC5BBF695F6FB724BD9E /* Pods-PayOrciOS_SDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1313426F64905A867293DAA192DDAB28 /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39A762AB00B3D0261070DCACB5C459E /* URLEncodedFormEncoder.swift */; };
 		14F851CDBD4A5236DAD0C377A6104986 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BB8409C6A74ABBF689663ABA20590 /* Extensions.swift */; };
-		1A0872BBF163597705D5B06B6C6215EA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BA34F2D7DD16B35182DB9C61CB118 /* NetworkManager.swift */; };
 		1A3C9B5ED2DDFD3CF7250CFBA673C54F /* Pods-PayOrciOS_SDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 004D0A4C8C9D20A7D10D1064001A74C1 /* Pods-PayOrciOS_SDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1D43D637804FC397814E65133939F986 /* KRProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 558888CC70A997D3FEE11472C19587E6 /* KRProgressHUD-dummy.m */; };
 		20988E7C942B437989E7A7BF1F8E9136 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B9D256D677171E7FB9A2DB8B642B /* DispatchQueue+Alamofire.swift */; };
 		2558B9A09FEC5710F7D00DD5E3E053C5 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8702939DA36992B2C87FB6E240A6242C /* Request.swift */; };
+		25928B4360D71E3468D7E3691E11543A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E42C48CB59FBBCEA58897EB331B4B /* HomeViewController.swift */; };
+		28AF1550266E3E7FF49CEDFAA684E607 /* CreateOrdersPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EBA92B154ED32C3412B2DB2A57054E /* CreateOrdersPost.swift */; };
 		296BF59A80969CF54CFCD4908064CF87 /* NetworkActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D167DD5CA637F0E5F4683B93E9DBBE01 /* NetworkActivityPlugin.swift */; };
 		29C433665FA967606C6CD5B8A265D1B6 /* Moya-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 218FAE68CE3AC41385ED730AA1B1572E /* Moya-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BAE018515EDDC019E40357DDEAC0178 /* KRProgressHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344A08540BEBF8CC6A952798D90D64FA /* KRProgressHUDViewController.swift */; };
 		36EDE8F37831FDB474E621284702ED94 /* MoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A402DF54C13B3B6738A82704C189DF /* MoyaProvider.swift */; };
 		372772F6E2BDB34849FE64B11DFE0466 /* Pods-PayOrciOS_SDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 988A7E97EB7CBCE5BBFDF4FD977858A9 /* Pods-PayOrciOS_SDK_Example-dummy.m */; };
-		375064E01979F36139913D05F1DF4479 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34CFA959AFB8257928B9E128C0603F /* HomeViewModel.swift */; };
 		39D449220194AE1CD884069FBF6F735D /* URLSessionConfiguration+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847186D5CE3F7D0E1D060095FAFD8C0A /* URLSessionConfiguration+Alamofire.swift */; };
+		3B0DD745D1D3CD77027E9F56B37815A8 /* PayOrciOS_SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E32293C3212162FA99EBCF6507B1E6C /* PayOrciOS_SDK-dummy.m */; };
 		3BCAE7843A2516EBA64768CC0CD79988 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C2A6BB584D4B2024972BAC58A11F4 /* ParameterEncoder.swift */; };
 		3D6C61B947DA99D10445138D48A83102 /* InnerKRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F78BCD99E1BAE235C266C7E1C6B56C /* InnerKRProgressHUD.swift */; };
 		3DD607D8EE7367C54BF5D9252D1F7AAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		47FBA86C15EC8060331926C9A8D54BB1 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6FAACD8E754689821A67170EFE7AD88 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C343CE388023161DB0E2F0FFB4637CC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73887D890F91EDA2C55370C1D27D95 /* WebViewController.swift */; };
 		4D9E593DECA015D410984C771CCFDD12 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 592936E6BE815C0484C047D7F190E851 /* Alamofire-dummy.m */; };
-		4FEA4C4C8D45317CD161178643477CFF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C237DE336CCE388B22B46C08509D3BE /* APIService.swift */; };
+		50C4E499FE207FD8588FEA2EED4F8B14 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34CFA959AFB8257928B9E128C0603F /* HomeViewModel.swift */; };
 		54A45AF20BFF99BA20B15AF09AC4901C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFF5D776255248B485B36A2C25EB35 /* Notifications.swift */; };
 		5746320BBB67E457AF4C4EE5A2D32799 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF4C534AB1738D11E1C160823F1DDB9 /* Validation.swift */; };
 		5ABDF47FC0D60B701B5A8E767DC1314F /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CCAA81863FA21797244F968A6862FC /* EventMonitor.swift */; };
-		5B0C294C4D7ABEB57E60CC9F51F4B712 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B06E3680103AC714B5110A258D6B74 /* Configuration.swift */; };
 		5CD127F101529C336A07D45CE1106A54 /* Alamofire-Alamofire in Resources */ = {isa = PBXBuildFile; fileRef = 085DBCE7DD98588B2ED103B1C1F36026 /* Alamofire-Alamofire */; };
 		5D9C9A91318A6208C6D6FE0EC96DEAC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		5DE1E9EE872B702F012DA1E310CCB157 /* MoyaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BF41AF97B3E988C9058EA633BBC0A5 /* MoyaError.swift */; };
@@ -55,16 +54,17 @@
 		6D11B5E3D02CE6F3FD35BEC9305A8D0D /* CredentialsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBCE688BAAB9B40D86C950441961EA4 /* CredentialsPlugin.swift */; };
 		6D3071F804219E6A520372754BA9F09C /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8241794D002FE979518AFBBBFE8EB78 /* URLConvertible+URLRequestConvertible.swift */; };
 		6E68FC477FEBC6BAF22C2ABC21F62A84 /* Moya+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C22849AD0E3343F36818F65237530 /* Moya+Alamofire.swift */; };
+		73EBD7CAB13C2AC7F129446D21F114BB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B06E3680103AC714B5110A258D6B74 /* Configuration.swift */; };
+		7853FA0B5A93724717C74EC16F1B5869 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C25597F06B9C862F346F4DF6ED3D41 /* AlertHelper.swift */; };
 		7933EDD15F245D28BE5D99E203E9BD1F /* DataStreamRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C539594D893FD77B5C36591141261 /* DataStreamRequest.swift */; };
+		79A1AF93D321D176102E6C74B77ECD6C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C237DE336CCE388B22B46C08509D3BE /* APIService.swift */; };
 		7A232A8D5C0D06F3CE373E1B46422118 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252C7AFD296D36D6D9161C6F263EE229 /* AFError.swift */; };
-		7E72D86C9C41ED7EC6E05A16CF905909 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		849FF90CD07B763B0D53DD4656BDED61 /* DownloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC70B22D7C4FA87A21B8CEA4B15F014 /* DownloadRequest.swift */; };
 		8904ED8DEB77CA657A4EED2F86EB961A /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A967B2FDE315F2FDD68C2A1EB0C73D /* AlamofireExtended.swift */; };
 		8D51421FF478040E6383D24254900967 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5F67A24F91CF1ED218D2C72FDF144D /* CFNetwork.framework */; };
 		8DF169B3ADBCBA100BE5D2CA34EDC31A /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32CE1CFBA743730384A074D684F279 /* Combine.swift */; };
 		8F4AC5455CDD202655025DE431360AEE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B2FFF2A3A1987F4F67B2315631CA55 /* ParameterEncoding.swift */; };
 		90148CDB03A8220364DA998526B7B2EF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0EA3F260B94498395905A14EDF778844 /* PrivacyInfo.xcprivacy */; };
-		9A236902E5F323A03D0391A10DE8B240 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E42C48CB59FBBCEA58897EB331B4B /* HomeViewController.swift */; };
 		9C89110A7C655E5C39B3135E9020CBF7 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9307BF8EA1C8AD28F8C6EB867842E64 /* Alamofire.swift */; };
 		9CE2B0DEBE0178D7BCA89AD9A7F0BFDF /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8390BC19806F8B7765C34220A856CD2 /* MultipartFormData.swift */; };
 		9D46306826317C2783B0A8255691E035 /* StringEncoding+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868397D650671CF6799C8730548B1F1 /* StringEncoding+Alamofire.swift */; };
@@ -80,6 +80,7 @@
 		B32BC6D67438172D5B58955EAB85D802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
 		B3EC2DE8A5B6FAF5ED30071E4A3D9BE7 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4324F73AB58A16B4EBA012E83AB2D4B /* DataRequest.swift */; };
 		B7FB51D80B098D03F81DF426A2F80142 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6C286EBF11A10DC25B6BCAE24B9BEA /* TargetType.swift */; };
+		B903C333704AC3712633D66466B2B89C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33BA34F2D7DD16B35182DB9C61CB118 /* NetworkManager.swift */; };
 		BACE03596343C2C83670A3996164D2F0 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C47B28BBEC83A2A871C3A2FF4FE0C8 /* RetryPolicy.swift */; };
 		BD716C672AC697BF23137D2E8E0F04E5 /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06CFDC9EB335A92854A05C913C0281 /* AnyEncodable.swift */; };
 		C2FF0AFBB1853A8459AC0432E6AD85A0 /* URL+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1233C1AB0DA79D191E06BE2AEAC2B7AB /* URL+Moya.swift */; };
@@ -90,8 +91,8 @@
 		C72F37CACEC780E304BA0B9D1077EFCC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EF9244E3229C9290EE16A358FE06A /* Response.swift */; };
 		C95C753AE30159950F8DB7308DDF77BD /* MoyaProvider+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A9586939811B02AE4BCE475EFD49D8 /* MoyaProvider+Defaults.swift */; };
 		CC2CEFEFB392E2AA75040A63D04B2400 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1593410200F9F312A4B3323B11D2E /* Atomic.swift */; };
+		CDD87A96F6038111BC1DC903AB8C0838 /* PayOrciOS_SDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F022E1DF8ABC05EFFCB54C8A6622427C /* PayOrciOS_SDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CDF42ED6AF2C0252840DF2A724375380 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED89121819AEC63736E4A2E8CD7CBFC /* SessionDelegate.swift */; };
-		CE7B9BCF66149C0812B1B23CA5EEDCE7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73887D890F91EDA2C55370C1D27D95 /* WebViewController.swift */; };
 		CECA8162BFE05143ECD1DE4225B82B9C /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344149BF4A9F1BE2147B28C49CA6C96D /* CachedResponseHandler.swift */; };
 		CFB40BBCFE9C4381E5B367D25AB33B2A /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F95B84C11BDD9F1F9A8C461227B5D0 /* Cancellable.swift */; };
 		CFDB27ACA68B4C18C6DC1E51998D7623 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46EAA490A1AC35060B2B6989CDD22F6 /* HTTPHeaders.swift */; };
@@ -101,7 +102,7 @@
 		D8B1F69BCF2B8262D5E9E576E59ECBE9 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D01976AD0EDC52B3E3971BA6B48F01 /* NetworkLoggerPlugin.swift */; };
 		DA07A5D6764940E785E70EDD08C5E1B0 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1D05E51BFF81B19BD41836A4AC096 /* Plugin.swift */; };
 		DC116AC0C3BC808A198B9C1704FA8C84 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201AD9C4EF6D1968EEAD241D522B76F5 /* RequestInterceptor.swift */; };
-		E4251E20527AAEC4DA4746752DF13C26 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C25597F06B9C862F346F4DF6ED3D41 /* AlertHelper.swift */; };
+		DD1E2152131E0E7D03CA1E02D8381AB2 /* CheckKeysSecretPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4C7A8D905DB4C5D28C129D0B30E38C /* CheckKeysSecretPost.swift */; };
 		E4BEE8283802F8F8B17F1A1BBBD3CDE4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7019AD2648CA5A9B7E6BB62F6976A624 /* Session.swift */; };
 		EB90F0DB42345E7C3DC434BEF479B6D6 /* KRActivityIndicatorViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D5A96BE309212AB2DB0D814C60EEEC /* KRActivityIndicatorViewStyle.swift */; };
 		EBCD3A4B632E4728D17C557E62BE4E28 /* KRProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F554FF990921AB548EFA646EDC223BE /* KRProgressHUD.swift */; };
@@ -111,7 +112,6 @@
 		EF7B5F7D016F12532A3256D820AC1F34 /* Moya-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E559E48B93EA01C2132EED021CA8EF8 /* Moya-dummy.m */; };
 		F3D9CAED623B54CC85DD99EB7B18C4B3 /* URLRequest+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD4AB0ED5DC3196F0D9F784E418800A /* URLRequest+Encoding.swift */; };
 		F7F52950E71E1E8042AE7DE0003891B0 /* KRActivityIndicatorView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 35CDABF44C75DCA6F4DF8E43ADA712A7 /* KRActivityIndicatorView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA912ACFAB6DAFF8DBE23A8CB2BE4A61 /* PayOrciOS_SDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E32293C3212162FA99EBCF6507B1E6C /* PayOrciOS_SDK-dummy.m */; };
 		FAB703884AC7E3E527AB50FB9001276B /* WebSocketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED2E765CD9ECBC3D06344E283BCE556 /* WebSocketRequest.swift */; };
 		FCC7F22645F61157752F2CA1BC978F55 /* KRProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8954D4949ADE01A05B2D5CD0EC7F83A8 /* KRProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -123,6 +123,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1E54812D4DAD96E68A8411204E9CEB1D;
 			remoteInfo = "Pods-PayOrciOS_SDK_Example";
+		};
+		0C9F24F2EBB5256024259C60BDC7DAEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA4681533D6AA601F9C9E2A116B7472C;
+			remoteInfo = KRProgressHUD;
 		};
 		0F5F4530DE4CF27D37CC77C6042C4F69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -179,6 +186,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
+		};
+		F6C6E761500FBD90A55190C5FF09D8A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F9141D333DA1A7BE5937F227221070;
+			remoteInfo = Moya;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -337,14 +351,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		058C1D922BDBD00353853129CBA3766B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E72D86C9C41ED7EC6E05A16CF905909 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5836941A8D4898AE4F9E373FDAB4B2D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +372,14 @@
 			files = (
 				8D51421FF478040E6383D24254900967 /* CFNetwork.framework in Frameworks */,
 				B32BC6D67438172D5B58955EAB85D802 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9B0296B84454FA5F35B661DA6F46DE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02B8094B9EECF2D26766B43BC4BFF1BB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,14 +881,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3E91E434F9B90CC29F04A2EF898DD74C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F00335851B79FF195523D994C252C22 /* PayOrciOS_SDK-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7151A22F5CE3B1F2E8A8B3D625A5FF19 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -888,6 +894,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7F52950E71E1E8042AE7DE0003891B0 /* KRActivityIndicatorView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D07EDB1B14CC2AA2A0C168A054B8B123 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD87A96F6038111BC1DC903AB8C0838 /* PayOrciOS_SDK-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,16 +995,18 @@
 		};
 		9AAED8DF8C36CFC814D55D74E50A0B83 /* PayOrciOS_SDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71F59E23EB4D616BE1EA54689780C96E /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK" */;
+			buildConfigurationList = 16118557B3E8DDD7D655C78C337C7E6B /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK" */;
 			buildPhases = (
-				3E91E434F9B90CC29F04A2EF898DD74C /* Headers */,
-				4CEBF7E747BD94A763A2F1C24A5D15D6 /* Sources */,
-				058C1D922BDBD00353853129CBA3766B /* Frameworks */,
-				FBE8B71523C494ECFF8951DF7CFFA8BE /* Resources */,
+				D07EDB1B14CC2AA2A0C168A054B8B123 /* Headers */,
+				DD98271FE300D80BCC349F000CB8D31C /* Sources */,
+				B9B0296B84454FA5F35B661DA6F46DE4 /* Frameworks */,
+				FC776BE3E990A32DBFF1AE4561B6F7FB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A89F7D45754DC7A91AD6B3D0F223BCE8 /* PBXTargetDependency */,
+				DB87F0F1A0761F0D73C670A4EC665721 /* PBXTargetDependency */,
 			);
 			name = PayOrciOS_SDK;
 			productName = PayOrciOS_SDK;
@@ -1142,7 +1158,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBE8B71523C494ECFF8951DF7CFFA8BE /* Resources */ = {
+		FC776BE3E990A32DBFF1AE4561B6F7FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1199,23 +1215,6 @@
 				39D449220194AE1CD884069FBF6F735D /* URLSessionConfiguration+Alamofire.swift in Sources */,
 				5746320BBB67E457AF4C4EE5A2D32799 /* Validation.swift in Sources */,
 				FAB703884AC7E3E527AB50FB9001276B /* WebSocketRequest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4CEBF7E747BD94A763A2F1C24A5D15D6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E4251E20527AAEC4DA4746752DF13C26 /* AlertHelper.swift in Sources */,
-				4FEA4C4C8D45317CD161178643477CFF /* APIService.swift in Sources */,
-				08E91490E645D2C8BB82C869FC293FE9 /* CheckKeysSecretPost.swift in Sources */,
-				5B0C294C4D7ABEB57E60CC9F51F4B712 /* Configuration.swift in Sources */,
-				00E9B2FAE9AE44BC8325DD51D3F6EF7F /* CreateOrdersPost.swift in Sources */,
-				9A236902E5F323A03D0391A10DE8B240 /* HomeViewController.swift in Sources */,
-				375064E01979F36139913D05F1DF4479 /* HomeViewModel.swift in Sources */,
-				1A0872BBF163597705D5B06B6C6215EA /* NetworkManager.swift in Sources */,
-				FA912ACFAB6DAFF8DBE23A8CB2BE4A61 /* PayOrciOS_SDK-dummy.m in Sources */,
-				CE7B9BCF66149C0812B1B23CA5EEDCE7 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1290,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD98271FE300D80BCC349F000CB8D31C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7853FA0B5A93724717C74EC16F1B5869 /* AlertHelper.swift in Sources */,
+				79A1AF93D321D176102E6C74B77ECD6C /* APIService.swift in Sources */,
+				DD1E2152131E0E7D03CA1E02D8381AB2 /* CheckKeysSecretPost.swift in Sources */,
+				73EBD7CAB13C2AC7F129446D21F114BB /* Configuration.swift in Sources */,
+				28AF1550266E3E7FF49CEDFAA684E607 /* CreateOrdersPost.swift in Sources */,
+				25928B4360D71E3468D7E3691E11543A /* HomeViewController.swift in Sources */,
+				50C4E499FE207FD8588FEA2EED4F8B14 /* HomeViewModel.swift in Sources */,
+				B903C333704AC3712633D66466B2B89C /* NetworkManager.swift in Sources */,
+				3B0DD745D1D3CD77027E9F56B37815A8 /* PayOrciOS_SDK-dummy.m in Sources */,
+				4C343CE388023161DB0E2F0FFB4637CC /* WebViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E73C827CBE4E1BF12911A7D8F6F37471 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1331,6 +1347,12 @@
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
 			targetProxy = F5812473A3FD9553C1572DCD97DF6C22 /* PBXContainerItemProxy */;
 		};
+		A89F7D45754DC7A91AD6B3D0F223BCE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KRProgressHUD;
+			target = BA4681533D6AA601F9C9E2A116B7472C /* KRProgressHUD */;
+			targetProxy = 0C9F24F2EBB5256024259C60BDC7DAEE /* PBXContainerItemProxy */;
+		};
 		BAFDA590FF7DBF0149318468EE5BFCE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = KRActivityIndicatorView;
@@ -1348,6 +1370,12 @@
 			name = PayOrciOS_SDK;
 			target = 9AAED8DF8C36CFC814D55D74E50A0B83 /* PayOrciOS_SDK */;
 			targetProxy = ECB8AE767DC209A06255657482E7755A /* PBXContainerItemProxy */;
+		};
+		DB87F0F1A0761F0D73C670A4EC665721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Moya;
+			target = 17F9141D333DA1A7BE5937F227221070 /* Moya */;
+			targetProxy = F6C6E761500FBD90A55190C5FF09D8A0 /* PBXContainerItemProxy */;
 		};
 		F779DCBC0F8D2AEAE7C59F7079822C74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1742,9 +1770,9 @@
 			};
 			name = Release;
 		};
-		9DA2008136D576FE3B909280F8854A0D /* Debug */ = {
+		937B629925209F4DD2D9E00606C78D97 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8001449D2F4BDEF96DF25C362415ACD5 /* PayOrciOS_SDK.debug.xcconfig */;
+			baseConfigurationReference = 59B15C5EA65D4A85138A1A62746070AD /* PayOrciOS_SDK.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1773,10 +1801,11 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		A0575C015F99298E26B421BE5E12C50B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1994,9 +2023,9 @@
 			};
 			name = Debug;
 		};
-		FBB8EEA180FDFE918402B3FD0D47F537 /* Release */ = {
+		FCCC42CC877A0E8BC654218E92F6E483 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59B15C5EA65D4A85138A1A62746070AD /* PayOrciOS_SDK.release.xcconfig */;
+			baseConfigurationReference = 8001449D2F4BDEF96DF25C362415ACD5 /* PayOrciOS_SDK.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2025,11 +2054,10 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2039,6 +2067,15 @@
 			buildConfigurations = (
 				EFA7758DD3D3CC7789C2EE450A5DA582 /* Debug */,
 				5E6A7312A550B6B413E90B395034F29C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16118557B3E8DDD7D655C78C337C7E6B /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCCC42CC877A0E8BC654218E92F6E483 /* Debug */,
+				937B629925209F4DD2D9E00606C78D97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2066,15 +2103,6 @@
 			buildConfigurations = (
 				C2B66C753728B87D32541084A81611FD /* Debug */,
 				4C8D90AEABE4DA096C83E2984A515B38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		71F59E23EB4D616BE1EA54689780C96E /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9DA2008136D576FE3B909280F8854A0D /* Debug */,
-				FBB8EEA180FDFE918402B3FD0D47F537 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

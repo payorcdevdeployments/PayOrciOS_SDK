@@ -5,11 +5,8 @@ platform :ios, '12.0'
 target 'PayOrciOS_SDK_Example' do
   pod 'PayOrciOS_SDK', :path => '../'
 
-  pod 'Moya'
+  pod 'Moya', '~> 15.0'
   pod "KRProgressHUD"
-  
-  #pod 'Moya', '~> 15.0'
-
   
   target 'PayOrciOS_SDK_Tests' do
     inherit! :search_paths
