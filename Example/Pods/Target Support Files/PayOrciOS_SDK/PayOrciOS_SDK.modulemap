@@ -1,0 +1,6 @@
+framework module PayOrciOS_SDK {
+  umbrella header "PayOrciOS_SDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

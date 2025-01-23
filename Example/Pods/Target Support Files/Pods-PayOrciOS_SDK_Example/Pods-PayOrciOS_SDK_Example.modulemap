@@ -1,0 +1,6 @@
+framework module Pods_PayOrciOS_SDK_Example {
+  umbrella header "Pods-PayOrciOS_SDK_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
