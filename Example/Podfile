@@ -1,13 +1,25 @@
 use_frameworks!
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 target 'PayOrciOS_SDK_Example' do
   pod 'PayOrciOS_SDK', :path => '../'
 
+  pod 'Moya', '~> 15.0'
+  pod "KRProgressHUD"
+
+  
   target 'PayOrciOS_SDK_Tests' do
     inherit! :search_paths
 
-    
   end
+  
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+  end
+  
 end
