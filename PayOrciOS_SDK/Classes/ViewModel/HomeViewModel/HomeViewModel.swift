@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HomeViewModel {
+public class HomeViewModel {
     
     private let networkManager = NetworkManager.shared
     
@@ -17,7 +17,7 @@ class HomeViewModel {
     var errorMessage: String?
     
     // Completion handler to pass success or failure response
-    func fetchCreatedOrderDetails(completion: @escaping (Result<CreateOrdersSuccessResponse, Error>) -> Void) {
+    public func fetchCreatedOrderDetails(completion: @escaping (Result<CreateOrdersSuccessResponse, Error>) -> Void) {
         
         // First, call checkKeysSecret endpoint
         checkKeysSecret { [weak self] result in

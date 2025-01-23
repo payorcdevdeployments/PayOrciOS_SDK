@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 import KRProgressHUD
 
-class WebViewController: UIViewController, WKNavigationDelegate {
+public class WebViewController: UIViewController, WKNavigationDelegate {
     private let webView: WKWebView
     private let urlString: String
     
