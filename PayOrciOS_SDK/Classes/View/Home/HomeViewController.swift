@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     private let fetchButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemMint
+        button.backgroundColor = .purple
         button.setTitle("Fetch Orders", for: .normal)
         return button
     }()

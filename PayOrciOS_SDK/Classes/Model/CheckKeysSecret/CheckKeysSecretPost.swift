@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CheckKeysSecretPostDataRepresent: Codable {
+public struct CheckKeysSecretPostDataRepresent: Codable {
     let merchantKey: String?
     let merchantSecret: String?
     let env: String?
@@ -19,7 +19,7 @@ struct CheckKeysSecretPostDataRepresent: Codable {
     }
 }
 
-struct CheckKeysSecretSuccessResponse: Codable {
+public struct CheckKeysSecretSuccessResponse: Codable {
     let message: String?
     let status: String?
     let code: String?

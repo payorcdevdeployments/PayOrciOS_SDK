@@ -21,7 +21,7 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
         fatalError("init(coder:) has not been implemented")
     }
         
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
         setupWebView()
@@ -64,7 +64,7 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     // WKNavigationDelegate methods
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         hideLoader()  // Hide the loader once the page finishes loading
         
         let script = """
@@ -97,7 +97,7 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
         }
     }
 
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         hideLoader()  // Hide the loader in case of error
         showAlert(message: "Failed to load the page: \(error.localizedDescription)")
     }

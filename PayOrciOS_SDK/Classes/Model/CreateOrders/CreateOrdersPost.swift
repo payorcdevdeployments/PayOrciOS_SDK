@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreateOrdersPostRepresent: Codable {
+public struct CreateOrdersPostRepresent: Codable {
     let data: CreateOrdersPostDataRepresent?
     
     enum CodingKeys: String, CodingKey {
@@ -15,7 +15,7 @@ struct CreateOrdersPostRepresent: Codable {
     }
 }
 
-struct CreateOrdersPostDataRepresent: Codable {
+public struct CreateOrdersPostDataRepresent: Codable {
     let classKey: String?
     let action: String?
     let captureMethod: String?
@@ -43,7 +43,7 @@ struct CreateOrdersPostDataRepresent: Codable {
     }
 }
 
-struct CreateOrderDetailsDataRepresent: Codable {
+public struct CreateOrderDetailsDataRepresent: Codable {
     let mOrderId: String?
     let amount: String?
     let convenienceFee: String?
@@ -61,7 +61,7 @@ struct CreateOrderDetailsDataRepresent: Codable {
     }
 }
 
-struct CustomerDetailsDataRepresent: Codable {
+public struct CustomerDetailsDataRepresent: Codable {
     let mCustomerId: String?
     let name: String?
     let email: String?
@@ -77,7 +77,7 @@ struct CustomerDetailsDataRepresent: Codable {
     }
 }
 
-struct BillingDetailsDataRepresent: Codable {
+public struct BillingDetailsDataRepresent: Codable {
     let addressLine1: String?
     let addressLine2: String?
     let city: String?
@@ -95,7 +95,7 @@ struct BillingDetailsDataRepresent: Codable {
     }
 }
 
-struct ShippingDetailsDataRepresent: Codable {
+public struct ShippingDetailsDataRepresent: Codable {
     let shippingName: String?
     let shippingEmail: String?
     let shippingCode: String?
@@ -129,14 +129,14 @@ struct ShippingDetailsDataRepresent: Codable {
 }
 
 // Model for 'Urls' object
-struct UrlsDataRepresent: Codable {
+public struct UrlsDataRepresent: Codable {
     let success: String?
     let cancel: String?
     let failure: String?
 }
 
 // Model for 'parameters or custom_data' object (key-value pair, e.g., alpha, beta, etc.)
-struct CustomDataRepresent: Codable {
+public struct CustomDataRepresent: Codable {
     let alpha: String?
     let beta: String?
     let gamma: String?
@@ -145,7 +145,7 @@ struct CustomDataRepresent: Codable {
 }
  
 // Model to represent the success response
-struct CreateOrdersSuccessResponse: Codable {
+public struct CreateOrdersSuccessResponse: Codable {
     let status: String?
     let statusCode: String?
     let message: String?

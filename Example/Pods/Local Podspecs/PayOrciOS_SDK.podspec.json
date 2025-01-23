@@ -16,7 +16,7 @@
     "branch": "main"
   },
   "platforms": {
-    "ios": "12.0"
+    "ios": "13.0"
   },
   "source_files": "PayOrciOS_SDK/Classes/**/*",
   "swift_versions": "5.0",
