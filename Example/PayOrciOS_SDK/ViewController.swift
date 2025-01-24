@@ -49,6 +49,7 @@ class ViewController: UIViewController {
         
     @objc
     private func fetchUserData() {
+        showLoader()
         homeViewModel.fetchCreatedOrderDetails { [weak self] (result: Result<CreateOrdersSuccessResponse, Error>) in
             self?.hideLoader()  // Hide the loader after completion
 
@@ -84,6 +85,4 @@ class ViewController: UIViewController {
             KRProgressHUD.dismiss()
         }
     }
-
 }
-

@@ -1,8 +1,9 @@
 //
 //  APIService.swift
-//  web_view_sample
+//  PayOrciOS_SDK
 //
-//  Created by EXAMPLE on 20/01/25.
+//  Created by ramanocs1145 on 20/01/25.
+//  Copyright (c) 2025 ramanocs1145. All rights reserved.
 //
 
 import Moya
@@ -55,12 +56,6 @@ extension APIService: TargetType {
                 "merchant-secret": (Configuration.shared.merchantSecret ?? ""),
                 "Content-Type": "application/json"
             ]
-//      case .createOrders(_):
-//            return [
-//                "merchant-key": "test-JR11KGG26DM",
-//                "merchant-secret": "sec-DC111UM26HQ",
-//                "Content-Type": "application/json"
-//            ]
         }
     }
     

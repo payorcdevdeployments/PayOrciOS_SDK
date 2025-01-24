@@ -1,8 +1,9 @@
 //
 //  Configuration.swift
-//  web_view_sample
+//  PayOrciOS_SDK
 //
-//  Created by EXAMPLE on 23/01/25.
+//  Created by ramanocs1145 on 23/01/25.
+//  Copyright (c) 2025 ramanocs1145. All rights reserved.
 //
 
 import Foundation

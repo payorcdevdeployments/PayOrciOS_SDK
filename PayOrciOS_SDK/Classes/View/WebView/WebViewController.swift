@@ -1,3 +1,11 @@
+//
+//  WebViewController.swift
+//  PayOrciOS_SDK
+//
+//  Created by ramanocs1145 on 20/01/25.
+//  Copyright (c) 2025 ramanocs1145. All rights reserved.
+//
+
 import UIKit
 import WebKit
 import KRProgressHUD
@@ -33,6 +41,7 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func setupWebView() {
+        webView.backgroundColor = .purple
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         view.addSubview(webView)
@@ -50,7 +59,8 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
             return
         }
         webView.load(URLRequest(url: url))
-        showLoader()  // Show the loader while loading the web view
+        // Show the loader while loading the web view.
+        showLoader()
     }
     
     private func showAlert(message: String) {
@@ -69,7 +79,8 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     
     // WKNavigationDelegate methods
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        hideLoader()  // Hide the loader once the page finishes loading
+        // Hide the loader once the page finishes loading
+        hideLoader()
         
         let script = """
         var eventMethod = window.addEventListener ? "addEventListener": "attachEvent"; 
@@ -102,8 +113,8 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     }
 
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        hideLoader()  // Hide the loader in case of error
+        // Hide the loader in case of error.
+        hideLoader()
         showAlert(message: "Failed to load the page: \(error.localizedDescription)")
     }
 }
-
