@@ -10,38 +10,37 @@ import UIKit
 import WebKit
 import KRProgressHUD
 
-public class WebViewController: UIViewController, WKNavigationDelegate {
-    private let webView: WKWebView
+public class WebViewController: UIViewController {
+    private weak var webView: WKWebView?
     private let urlString: String
     
     public init(urlString: String) {
         self.urlString = urlString
-        let webViewConfiguration = WKWebViewConfiguration()
-        let webpagePreferences = WKWebpagePreferences()
-        if #available(iOS 14.0, *) {
-            webpagePreferences.allowsContentJavaScript = true
-        } else {
-            // Fallback on earlier versions
-        } // Enable JavaScript
-        webViewConfiguration.defaultWebpagePreferences = webpagePreferences
-
-        self.webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
+        
+        // Initially hide the back button
+        self.navigationItem.hidesBackButton = true
+
         setupWebView()
         loadURL()
     }
     
     private func setupWebView() {
-        webView.backgroundColor = .purple
+        let contentController = WKUserContentController()
+        contentController.add(self, name: "iOSBridge")
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        
+        let webView = WKWebView(frame: .zero, configuration: config)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         view.addSubview(webView)
@@ -51,14 +50,15 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        self.webView = webView
     }
-        
+    
     private func loadURL() {
         guard let url = URL(string: urlString) else {
             showAlert(message: "Invalid URL")
             return
         }
-        webView.load(URLRequest(url: url))
+        self.webView?.load(URLRequest(url: url))
         // Show the loader while loading the web view.
         showLoader()
     }
@@ -70,51 +70,85 @@ public class WebViewController: UIViewController, WKNavigationDelegate {
     private func showLoader() {
         KRProgressHUD.showOn(self).show()
     }
-
+    
     private func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             KRProgressHUD.dismiss()
         }
     }
-    
+}
+
+//MARK: - WKNavigationDelegate
+extension WebViewController: WKNavigationDelegate {
     // WKNavigationDelegate methods
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Hide the loader once the page finishes loading
         hideLoader()
         
         let script = """
-        var eventMethod = window.addEventListener ? "addEventListener": "attachEvent"; 
-        var eventer = window[eventMethod]; 
-        var messageEvent = eventMethod == "attachEvent" ? "onmessage": "message"; 
-
-        eventer(messageEvent, function(e) { 
-            console.log(JSON.parse(e.data)); // This will show all the result attributes 
-            var result = JSON.parse(e.data); 
-            console.log(result); // Check the entire result object for clarity
-
-            if (result['status'] === "SUCCESS") { 
-                alert("Transaction successful. Transaction ID: " + result['transaction_id']); 
-            } else if (result['status'] === "CANCELLED") { 
-                alert(result['remark']); 
-            } else if (result['status'] === "FAILED") { 
-                alert("Transaction failed. Transaction ID: " + result['transaction_id']); 
-            } 
-            alert("This is a test alert for CANCELLED status.");
-
-            document.getElementById('myModal').style.display = 'none';
-        }, false);
-        """
+                     console.log("Injecting JavaScript...");
+                     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                     var eventer = window[eventMethod];
+                     var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+                     
+                     eventer(messageEvent, function(e) {
+                        console.log("Message received: ", e.data);
+                        window.webkit.messageHandlers.iOSBridge.postMessage(e.data);
+                     }, false);
+                     """
         
         webView.evaluateJavaScript(script) { (result, error) in
             if let error = error {
                 debugPrint("Error injecting script: \(error.localizedDescription)")
+            } else {
+                debugPrint("JavaScript injected successfully")
             }
         }
     }
-
+    
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         // Hide the loader in case of error.
         hideLoader()
         showAlert(message: "Failed to load the page: \(error.localizedDescription)")
+    }
+}
+
+//MARK: - WKScriptMessageHandler
+extension WebViewController: WKScriptMessageHandler{
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard (message.name == "iOSBridge") else { return }
+        if let data = message.body as? String {
+            handlePostMessage(data: data)
+        } else {
+            debugPrint("Invalid message format")
+        }
+    }
+    
+    private func handlePostMessage(data: String) {
+        do {
+            let jsonData = data.data(using: .utf8)!
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                debugPrint("Received data: \(jsonObject)")
+                
+                if let pOrderId = jsonObject["p_order_id"] as? String, !pOrderId.isEmpty {
+                    // Handle the payment status check
+                    debugPrint("Payment Order ID: \(pOrderId)")
+                    checkPaymentStatus(orderId: pOrderId)
+                    
+                    // Once condition is met, show the back button
+                    DispatchQueue.main.async {
+                        self.navigationItem.hidesBackButton = false
+                    }
+                }
+            }
+        } catch {
+            debugPrint("Error parsing JSON: \(error.localizedDescription)")
+        }
+    }
+    
+    private func checkPaymentStatus(orderId: String) {
+        // Perform payment status check here
+        debugPrint("Checking payment status for Order ID: \(orderId)")
+        // Add your repository logic
     }
 }
