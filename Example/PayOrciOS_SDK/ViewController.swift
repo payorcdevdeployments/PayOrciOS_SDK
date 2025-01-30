@@ -34,17 +34,21 @@ class ViewController: UIViewController {
     }
 
     private func setupUI() {
-        fetchButton.addTarget(self, action: #selector(fetchUserData), for: .touchUpInside)
-
-        view.addSubview(fetchButton)
+//        fetchButton.addTarget(self, action: #selector(fetchUserData), for: .touchUpInside)
+//
+//        view.addSubview(fetchButton)
+//        
+//        NSLayoutConstraint.activate([
+//            
+//            fetchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            fetchButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            fetchButton.widthAnchor.constraint(equalToConstant: 200),
+//            fetchButton.heightAnchor.constraint(equalToConstant: 100)
+//        ])
         
-        NSLayoutConstraint.activate([
-            
-            fetchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            fetchButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            fetchButton.widthAnchor.constraint(equalToConstant: 200),
-            fetchButton.heightAnchor.constraint(equalToConstant: 100)
-        ])
+        let formVC = PayOrciOS_SDK.FormViewController()
+        formVC.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
+        present(formVC, animated: true, completion: nil)
     }
         
     @objc
