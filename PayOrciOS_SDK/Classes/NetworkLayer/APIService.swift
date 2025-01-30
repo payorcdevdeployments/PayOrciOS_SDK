@@ -19,7 +19,7 @@ extension APIService: TargetType {
         case .checkKeysSecret:
             return (Configuration.shared.apiVersion ?? "") + "/check/keys-secret"
         case .createOrders:
-            return (Configuration.shared.apiVersion ?? "") + "//open/orders/create"
+            return (Configuration.shared.apiVersion ?? "") + "/sdk/orders/create"
         }
     }
     
@@ -50,10 +50,22 @@ extension APIService: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .checkKeysSecret(_), .createOrders(_):
+        case .checkKeysSecret(_):
             return [
                 "merchant-key": (Configuration.shared.merchantKey ?? ""),
                 "merchant-secret": (Configuration.shared.merchantSecret ?? ""),
+                "Content-Type": "application/json"
+            ]
+            
+        case .createOrders(_):
+            return [
+                "merchant-key": (Configuration.shared.merchantKey ?? ""),
+                "merchant-secret": (Configuration.shared.merchantSecret ?? ""),
+                "sdk": DeviceInfo.sdk,
+                "sdk-version": AppConstants.marketingVersion,
+                "device-brand": DeviceInfo.brand,
+                "device-model": DeviceInfo.model,
+                "device-os-version": DeviceInfo.osVersion,
                 "Content-Type": "application/json"
             ]
         }

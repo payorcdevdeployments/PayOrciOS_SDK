@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        print("Brand: \(DeviceInfo.brand)")
+        print("Model: \(DeviceInfo.model)")
+        print("Device Name: \(DeviceInfo.deviceName)")
+        print("OS Version: \(DeviceInfo.osVersion)")
+        print("System Name: \(DeviceInfo.systemName)")
+        print("sdk-version: \(AppConstants.marketingVersion)")
+
+        
         PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://nodeserver.payorc.com/api/", apiVersion: "v1", merchantKey: "test-JR11KGG26DM", merchantSecret: "sec-DC111UM26HQ", environment: "test")
         
         // Create a UIWindow instance
