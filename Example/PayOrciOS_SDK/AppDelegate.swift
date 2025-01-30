@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PayOrciOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://nodeserver.payorc.com/api/", apiVersion: "v1", merchantKey: "test-JR11KGG26DM", merchantSecret: "sec-DC111UM26HQ", environment: "test")
         
         // Create a UIWindow instance
         window = UIWindow(frame: UIScreen.main.bounds)

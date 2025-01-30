@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
-        PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://nodeserver.payorc.com/api/", apiVersion: "v1", merchantKey: "test-JR11KGG26DM", merchantSecret: "sec-DC111UM26HQ", environment: "test")
         setupUI()
     }
 
