@@ -58,9 +58,9 @@ public class WebViewController: UIViewController {
             showAlert(message: "Invalid URL")
             return
         }
-        self.webView?.load(URLRequest(url: url))
         // Show the loader while loading the web view.
         showLoader()
+        self.webView?.load(URLRequest(url: url))
     }
     
     private func showAlert(message: String) {
@@ -68,6 +68,7 @@ public class WebViewController: UIViewController {
     }
     
     private func showLoader() {
+        KRProgressHUD.set(style: KRProgressHUDStyle.custom(background: UIColor.gray, text: UIColor.black, icon: UIColor.black))
         KRProgressHUD.showOn(self).show()
     }
     

@@ -74,10 +74,10 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .lightGray
         title = "PayOrc Payment Request"
         let textAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.blue,
+            .foregroundColor: UIColor.black,
             .font: UIFont.systemFont(ofSize: 16, weight: .regular) // Set font size and weight
         ]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -191,7 +191,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         }
         // Submit Button
         submitButton.setTitle("Submit", for: .normal)
-        submitButton.setTitleColor(UIColor.white, for: .normal)
+        submitButton.setTitleColor(UIColor.black, for: .normal)
         submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0, weight: .bold)
         submitButton.addTarget(self, action: #selector(handleSubmit), for: .touchUpInside)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -301,7 +301,7 @@ extension CreateOrdersFormViewController {
         let label = UILabel()
         label.text = labelText
         label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
+        label.textColor = .black
         
         textField.borderStyle = .roundedRect
         textField.font = .systemFont(ofSize: 16)
