@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     private let fetchButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .purple
-        button.setTitle("Fetch Orders", for: .normal)
+        button.backgroundColor = .cyan
+        button.titleLabel?.textColor = .white
+        button.setTitle("PayOrc Payment Request", for: .normal)
         return button
     }()
 
@@ -29,6 +30,8 @@ class ViewController: UIViewController {
     }
 
     private func setupUI() {
+        fetchButton.layer.cornerRadius = 20
+        fetchButton.layer.masksToBounds = true
         fetchButton.addTarget(self, action: #selector(fetchUserData), for: .touchUpInside)
 
         view.addSubview(fetchButton)
@@ -37,7 +40,7 @@ class ViewController: UIViewController {
             
             fetchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             fetchButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            fetchButton.widthAnchor.constraint(equalToConstant: 200),
+            fetchButton.widthAnchor.constraint(equalToConstant: 250),
             fetchButton.heightAnchor.constraint(equalToConstant: 100)
         ])
     }

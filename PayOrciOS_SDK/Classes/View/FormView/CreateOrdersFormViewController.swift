@@ -76,9 +76,17 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         super.viewDidLoad()
         view.backgroundColor = .purple
         title = "PayOrc Payment Request"
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.blue,
+            .font: UIFont.systemFont(ofSize: 16, weight: .regular) // Set font size and weight
+        ]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
 
         // Add Pre-Fill button
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pre-Fill", style: .plain, target: self, action: #selector(preFillData))
+        
+        // Add "Dismiss" button to the left
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissView))
 
         setupUI()
     }
@@ -208,6 +216,10 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+    }
+    
+    @objc private func dismissView() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func preFillData() {
