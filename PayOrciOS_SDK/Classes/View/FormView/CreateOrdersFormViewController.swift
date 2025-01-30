@@ -9,129 +9,233 @@
 import UIKit
 
 // MARK: - ViewController
-public class CreateOrdersFormViewController: UIViewController {
+public class CreateOrdersFormViewController: UIViewController, UIScrollViewDelegate {
     
-    private var sections: [FormSection] = []
-    private var collectionView: UICollectionView!
+    // ScrollView and ContentView
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
+    // UI Elements
+    private let classNameTextField = UITextField()
+    private let actionTextField = UITextField()
+    private let captureMethodTextField = UITextField()
+    private let paymentTokenTextField = UITextField()
+    
+    // Order Details
+    private let orderIdTextField = UITextField()
+    private let amountTextField = UITextField()
+    private let convenienceFeeTextField = UITextField()
+    private let quantityTextField = UITextField()
+    private let currencyTextField = UITextField()
+    private let descriptionTextField = UITextField()
+    
+    // Customer Details
+    private let customerIdTextField = UITextField()
+    private let customerNameTextField = UITextField()
+    private let customerEmailTextField = UITextField()
+    private let customerMobileTextField = UITextField()
+    private let customerCodeTextField = UITextField()
+    
+    // Billing Details
+    private let billingAddress1TextField = UITextField()
+    private let billingAddress2TextField = UITextField()
+    private let billingCityTextField = UITextField()
+    private let billingProvinceTextField = UITextField()
+    private let billingCountryTextField = UITextField()
+    private let billingPinTextField = UITextField()
+    
+    // Shipping Details
+    private let shippingNameTextField = UITextField()
+    private let shippingEmailTextField = UITextField()
+    private let shippingCodeTextField = UITextField()
+    private let shippingMobileTextField = UITextField()
+    private let shippingAddress1TextField = UITextField()
+    private let shippingAddress2TextField = UITextField()
+    private let shippingCityTextField = UITextField()
+    private let shippingProvinceTextField = UITextField()
+    private let shippingCountryTextField = UITextField()
+    private let shippingPinTextField = UITextField()
+    private let locationPinTextField = UITextField()
+    private let shippingCurrencyTextField = UITextField()
+    private let shippingAmountTextField = UITextField()
+    
+    // URLs
+    private let successURLTextField = UITextField()
+    private let cancelURLTextField = UITextField()
+    private let failureURLTextField = UITextField()
+
+    // Submit Button
     private let submitButton = UIButton(type: .system)
     
-    public init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var fields = [UIStackView]()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupData()
-        setupCollectionView()
-        setupSubmitButton()
-    }
-    
-    private func setupData() {
-        sections = [
-            FormSection(title: "Order Details", fields: [
-                FormField(title: "Order ID", placeholder: "Enter Order ID", value: nil, keyboardType: .numberPad, validation: { !$0.isEmpty }),
-                FormField(title: "Amount", placeholder: "Enter Amount", value: nil, keyboardType: .decimalPad, validation: { !$0.isEmpty })
-            ]),
-            FormSection(title: "Customer Details", fields: [
-                FormField(title: "Customer Name", placeholder: "Enter Name", value: nil, keyboardType: .default, validation: { !$0.isEmpty }),
-                FormField(title: "Email", placeholder: "Enter Email", value: nil, keyboardType: .emailAddress, validation: { $0.contains("@") })
-            ])
-        ]
-    }
-    
-    private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(FormCollectionViewCell.self, forCellWithReuseIdentifier: "FormCell")
-        view.addSubview(collectionView)
-    }
-    
-    private func setupSubmitButton() {
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.addTarget(self, action: #selector(submitForm), for: .touchUpInside)
-        view.addSubview(submitButton)
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            submitButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            submitButton.heightAnchor.constraint(equalToConstant: 50),
-            submitButton.widthAnchor.constraint(equalToConstant: 150)
-        ])
-    }
-    
-    @objc
-    private func submitForm() {
-        for section in sections {
-            for field in section.fields {
-                if let value = field.value, !value.isEmpty {
-                    continue
-                } else {
-                    showAlert(message: "Please fill in all fields")
-                    return
-                }
-            }
-        }
-        showAlert(message: "Form submitted successfully!")
-    }
-    
-    private func showAlert(message: String) {
-        AlertHelper.showAlert(on: self, message: message)
-    }
-}
-
-// MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
-extension CreateOrdersFormViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].fields.count
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FormCell", for: indexPath) as! FormCollectionViewCell
-        let field = sections[indexPath.section].fields[indexPath.item]
-        cell.configure(with: field)
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewCell
-public class FormCollectionViewCell: UICollectionViewCell {
-    private let textField = UITextField()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+        view.backgroundColor = .purple
         setupUI()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func setupUI() {
-        textField.borderStyle = .roundedRect
-        contentView.addSubview(textField)
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        title = "PayOrc Payment Request"
+        
+        // Configure ScrollView
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delegate = self
+        view.addSubview(scrollView)
+        
+        // Configure ContentView
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(contentView)
+        
+        // Create and configure text fields
+        fields = [
+            createLabelAndTextField(labelText: "Class Name", textField: classNameTextField),
+            createLabelAndTextField(labelText: "Action", textField: actionTextField),
+            createLabelAndTextField(labelText: "Capture Method", textField: captureMethodTextField),
+            createLabelAndTextField(labelText: "Payment Token", textField: paymentTokenTextField),
+            
+            // Order Details
+            createLabelAndTextField(labelText: "Order ID", textField: orderIdTextField),
+            createLabelAndTextField(labelText: "Amount", textField: amountTextField),
+            createLabelAndTextField(labelText: "Convenience Fee", textField: convenienceFeeTextField),
+            createLabelAndTextField(labelText: "Quantity", textField: quantityTextField),
+            createLabelAndTextField(labelText: "Currency", textField: currencyTextField),
+            createLabelAndTextField(labelText: "Description", textField: descriptionTextField),
+            
+            // Customer Details
+            createLabelAndTextField(labelText: "Customer ID", textField: customerIdTextField),
+            createLabelAndTextField(labelText: "Customer Name", textField: customerNameTextField),
+            createLabelAndTextField(labelText: "Customer Email", textField: customerEmailTextField),
+            createLabelAndTextField(labelText: "Customer Mobile", textField: customerMobileTextField),
+            createLabelAndTextField(labelText: "Customer Code", textField: customerCodeTextField),
+            
+            // Billing Details
+            createLabelAndTextField(labelText: "Billing Address Line 1", textField: billingAddress1TextField),
+            createLabelAndTextField(labelText: "Billing Address Line 2", textField: billingAddress2TextField),
+            createLabelAndTextField(labelText: "Billing City", textField: billingCityTextField),
+            createLabelAndTextField(labelText: "Billing Province", textField: billingProvinceTextField),
+            createLabelAndTextField(labelText: "Billing Country", textField: billingCountryTextField),
+            createLabelAndTextField(labelText: "Billing PIN", textField: billingPinTextField),
+            
+            // Shipping Details
+            createLabelAndTextField(labelText: "Shipping Name", textField: shippingNameTextField),
+            createLabelAndTextField(labelText: "Shipping Email", textField: shippingEmailTextField),
+            createLabelAndTextField(labelText: "Shipping Code", textField: shippingCodeTextField),
+            createLabelAndTextField(labelText: "Shipping Mobile", textField: shippingMobileTextField),
+            createLabelAndTextField(labelText: "Shipping Address Line 1", textField: shippingAddress1TextField),
+            createLabelAndTextField(labelText: "Shipping Address Line 2", textField: shippingAddress2TextField),
+            createLabelAndTextField(labelText: "Shipping City", textField: shippingCityTextField),
+            createLabelAndTextField(labelText: "Shipping Province", textField: shippingProvinceTextField),
+            createLabelAndTextField(labelText: "Shipping Country", textField: shippingCountryTextField),
+            createLabelAndTextField(labelText: "Shipping PIN", textField: shippingPinTextField),
+            createLabelAndTextField(labelText: "Location PIN", textField: locationPinTextField),
+            createLabelAndTextField(labelText: "Shipping Currency", textField: shippingCurrencyTextField),
+            createLabelAndTextField(labelText: "Shipping Amount", textField: shippingAmountTextField),
+            
+            // URLs
+            createLabelAndTextField(labelText: "Success URL", textField: successURLTextField),
+            createLabelAndTextField(labelText: "Cancel URL", textField: cancelURLTextField),
+            createLabelAndTextField(labelText: "Failure URL", textField: failureURLTextField)
+        ]
+        
+        var previousView: UIView? = nil
+        for (index, field) in fields.enumerated() {
+            contentView.addSubview(field)
+            field.translatesAutoresizingMaskIntoConstraints = false
+            field.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+            field.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+            
+            if let previousView = previousView {
+                field.topAnchor.constraint(equalTo: previousView.bottomAnchor, constant: 8).isActive = true
+            } else {
+                field.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
+            }
+            
+            // Set return key type for text fields
+            if let textField = field.arrangedSubviews[1] as? UITextField {
+                if index == fields.count - 1 {
+                    // Last field: Done
+                    textField.returnKeyType = .done
+                } else {
+                    // All other fields: Next
+                    textField.returnKeyType = .next
+                }
+                
+                // Set the delegate for each text field
+                textField.delegate = self
+            }
+            
+            previousView = field
+        }
+        // Submit Button
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.setTitleColor(UIColor.white, for: .normal)
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        submitButton.addTarget(self, action: #selector(handleSubmit), for: .touchUpInside)
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(submitButton)
+        
+        if let lastField = previousView {
+            lastField.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -16).isActive = true
+        }
+        
+        submitButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        submitButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        submitButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        submitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
+        
+        // Constraints for ScrollView and ContentView
         NSLayoutConstraint.activate([
-            textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            textField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
+}
+
+extension CreateOrdersFormViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let index = fields.firstIndex(where: { $0.arrangedSubviews[1] == textField }) {
+            if index < fields.count - 1 {
+                // Move to the next field
+                if let nextTextField = fields[index + 1].arrangedSubviews[1] as? UITextField {
+                    nextTextField.becomeFirstResponder()
+                }
+            } else {
+                // Submit the form for the last field
+                handleSubmit()
+            }
+        }
+        return true
+    }
+}
+
+extension CreateOrdersFormViewController {
     
-    func configure(with field: FormField) {
-        textField.placeholder = field.placeholder
-        textField.keyboardType = field.keyboardType
+    private func createLabelAndTextField(labelText: String, textField: UITextField) -> UIStackView {
+        let label = UILabel()
+        label.text = labelText
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .white
+        
+        textField.borderStyle = .roundedRect
+        textField.font = .systemFont(ofSize: 16)
+        
+        let stackView = UIStackView(arrangedSubviews: [label, textField])
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        return stackView
+    }
+    
+    @objc private func handleSubmit() {
+        // Handle form submission
+        debugPrint("Form submitted")
     }
 }
