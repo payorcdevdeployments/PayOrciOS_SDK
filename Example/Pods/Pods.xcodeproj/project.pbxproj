@@ -75,8 +75,7 @@
 		AAC982194C2E64A6EA74BE58C7BF6B45 /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840E97D6DDEAB4EF2D8555542667C0F /* ValidationType.swift */; };
 		AC3A794B2D4B2431006800C4 /* CreateOrdersFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794A2D4B2431006800C4 /* CreateOrdersFormField.swift */; };
 		AC3A794C2D4B2431006800C4 /* CreateOrdersFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794A2D4B2431006800C4 /* CreateOrdersFormField.swift */; };
-		AC3A794F2D4B2650006800C4 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794E2D4B2650006800C4 /* FormViewController.swift */; };
-		AC3A79502D4B2650006800C4 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794E2D4B2650006800C4 /* FormViewController.swift */; };
+		AC3A794F2D4B2650006800C4 /* CreateOrdersFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */; };
 		AD6DDBFEEE86E6A99B45398DF88A8A93 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A255F011AB4FB8C7B2378BFA37D8F /* KRActivityIndicatorView.swift */; };
 		B23B20F1C3E3BA41870F9137074F1AEE /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E341F2960C351AD578DD0A1437A85 /* MultipartUpload.swift */; };
 		B32BC6D67438172D5B58955EAB85D802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
@@ -306,7 +305,7 @@
 		A9E2B012A9BB0BA52E81B1361449B29E /* Pods-PayOrciOS_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayOrciOS_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AB48DA344732019FBDE896C6571B7ECA /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayOrciOS_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC3A794A2D4B2431006800C4 /* CreateOrdersFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrdersFormField.swift; sourceTree = "<group>"; };
-		AC3A794E2D4B2650006800C4 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrdersFormViewController.swift; sourceTree = "<group>"; };
 		ACCC33F43E7487524B0DF020FD941EAE /* PayOrciOS_SDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = PayOrciOS_SDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AE6C286EBF11A10DC25B6BCAE24B9BEA /* TargetType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetType.swift; path = Sources/Moya/TargetType.swift; sourceTree = "<group>"; };
 		B12D6D5AFF9C25C50691C2CCE7EA02DD /* PayOrciOS_SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PayOrciOS_SDK-umbrella.h"; sourceTree = "<group>"; };
@@ -721,7 +720,7 @@
 		AC3A794D2D4B2630006800C4 /* FormView */ = {
 			isa = PBXGroup;
 			children = (
-				AC3A794E2D4B2650006800C4 /* FormViewController.swift */,
+				AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */,
 			);
 			path = FormView;
 			sourceTree = "<group>";
@@ -1192,7 +1191,6 @@
 				9CE2B0DEBE0178D7BCA89AD9A7F0BFDF /* MultipartFormData.swift in Sources */,
 				B23B20F1C3E3BA41870F9137074F1AEE /* MultipartUpload.swift in Sources */,
 				EDD1F4A31BC9F0816F25B14E0B4B89B5 /* NetworkReachabilityManager.swift in Sources */,
-				AC3A79502D4B2650006800C4 /* FormViewController.swift in Sources */,
 				54A45AF20BFF99BA20B15AF09AC4901C /* Notifications.swift in Sources */,
 				A698A792F293BA997FE75C70CD18B022 /* OperationQueue+Alamofire.swift in Sources */,
 				3BCAE7843A2516EBA64768CC0CD79988 /* ParameterEncoder.swift in Sources */,
@@ -1243,7 +1241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76504BADFCEFACCF186344BA9C994E28 /* AlertHelper.swift in Sources */,
-				AC3A794F2D4B2650006800C4 /* FormViewController.swift in Sources */,
+				AC3A794F2D4B2650006800C4 /* CreateOrdersFormViewController.swift in Sources */,
 				E535D793E70297389B010C67D02B297B /* APIService.swift in Sources */,
 				4EE44CA185375F4332E21E319AECFDC3 /* CheckKeysSecretPost.swift in Sources */,
 				E1D4CF79CCA65260DEAD9A433700FAF7 /* Configuration.swift in Sources */,

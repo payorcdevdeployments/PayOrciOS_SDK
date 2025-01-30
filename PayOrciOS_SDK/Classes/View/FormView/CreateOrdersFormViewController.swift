@@ -1,18 +1,27 @@
 //
-//  FormViewController.swift
-//  Alamofire
+//  CreateOrdersFormViewController.swift
+//  PayOrciOS_SDK
 //
-//  Created by Ramanathan on 30/01/25.
+//  Created by ramanocs1145 on 30/01/25.
+//  Copyright (c) 2025 ramanocs1145. All rights reserved.
 //
 
 import UIKit
 
 // MARK: - ViewController
-public class FormViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+public class CreateOrdersFormViewController: UIViewController {
     
     private var sections: [FormSection] = []
     private var collectionView: UICollectionView!
     private let submitButton = UIButton(type: .system)
+    
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +74,21 @@ public class FormViewController: UIViewController, UICollectionViewDataSource, U
                 if let value = field.value, !value.isEmpty {
                     continue
                 } else {
-                    AlertHelper.showAlert(on: self, message: "Please fill in all fields")
+                    showAlert(message: "Please fill in all fields")
                     return
                 }
             }
         }
-        AlertHelper.showAlert(on: self, message: "Form submitted successfully!")
+        showAlert(message: "Form submitted successfully!")
     }
-        
+    
+    private func showAlert(message: String) {
+        AlertHelper.showAlert(on: self, message: message)
+    }
+}
+
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+extension CreateOrdersFormViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
