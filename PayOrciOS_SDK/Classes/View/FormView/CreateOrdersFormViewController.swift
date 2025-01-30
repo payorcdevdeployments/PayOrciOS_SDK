@@ -88,6 +88,9 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         // Add "Dismiss" button to the left
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissView))
 
+        // Ensure back button only shows chevron icon
+        navigationItem.backButtonTitle = ""  // Hide text, keep chevron
+
         setupUI()
     }
     
