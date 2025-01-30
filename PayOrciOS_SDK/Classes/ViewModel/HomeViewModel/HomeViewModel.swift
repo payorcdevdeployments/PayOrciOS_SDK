@@ -57,23 +57,6 @@ public class HomeViewModel {
     
     // Private method to handle the createOrders API call
     private func createOrders(createOrdersPostRepresent :CreateOrdersPostRepresent, completion: @escaping (Result<CreateOrdersSuccessResponse, Error>) -> Void) {
-        
-//        let createOrderDetailsDataRepresent = CreateOrderDetailsDataRepresent(mOrderId: "1234", amount: "100", convenienceFee: "0", quantity: "2", currency: "AED", description: "")
-//        
-//        let customerDetailsDataRepresent = CustomerDetailsDataRepresent(mCustomerId: "123", name: "John Doe", email: "pawan@payorc.com", mobile: "987654321", code: "971")
-//
-//        let billingDetailsDataRepresent = BillingDetailsDataRepresent(addressLine1: "address 1", addressLine2: "address 2", city: "Amarpur", province: "Bihar", country: "IN", pin: "482008")
-//        
-//        let shippingDetailsDataRepresent = ShippingDetailsDataRepresent(shippingName: "Pawan Kushwaha", shippingEmail: "", shippingCode: "91", shippingMobile: "9876543210", addressLine1: "address 1", addressLine2: "address 2", city: "Jabalpur", province: "Madhya Pradesh", country: "IN", pin: "482005", locationPin: "https://location/somepoint", shippingCurrency: "AED", shippingAmount: "10")
-//
-//        let urlsDataRepresent = UrlsDataRepresent(success: "", cancel: "", failure: "")
-//        
-//        let customDataRepresent = [CustomDataRepresent(alpha: "", beta: "", gamma: "", delta: "", epsilon: "")]
-//        
-//        let createOrdersPostDataRepresent = CreateOrdersPostDataRepresent(classKey: "ECOM", action: "SALE", captureMethod: "MANUAL", paymentToken: "", orderDetails: createOrderDetailsDataRepresent, customerDetails: customerDetailsDataRepresent, billingDetails: billingDetailsDataRepresent, shippingDetails: shippingDetailsDataRepresent, urls: urlsDataRepresent, parameters: customDataRepresent, customData: customDataRepresent)
-//
-//        let createOrdersPostRepresent = CreateOrdersPostRepresent(data: createOrdersPostDataRepresent)
-
         networkManager.request(.createOrders(createOrdersPostRepresent: createOrdersPostRepresent)) { [weak self] (result: Result<CreateOrdersSuccessResponse, Error>) in
             switch result {
             case .success(let ordersSuccessResponse):

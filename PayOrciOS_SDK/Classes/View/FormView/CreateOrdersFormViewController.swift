@@ -75,6 +75,11 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
+        title = "PayOrc Payment Request"
+
+        // Add Pre-Fill button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pre-Fill", style: .plain, target: self, action: #selector(preFillData))
+
         setupUI()
     }
     
@@ -83,7 +88,6 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     }
     
     private func setupUI() {
-        title = "PayOrc Payment Request"
         
         // Configure ScrollView
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -204,6 +208,59 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+    }
+    
+    @objc private func preFillData() {
+        
+        classNameTextField.text = "ECOM"
+        actionTextField.text = "SALE"
+        captureMethodTextField.text = "MANUAL"
+        paymentTokenTextField.text = ""
+
+        // Order Details
+        orderIdTextField.text = "1234"
+        amountTextField.text = "100"
+        convenienceFeeTextField.text = "0"
+        quantityTextField.text = "2"
+        currencyTextField.text = "AED"
+        descriptionTextField.text = ""
+
+        // Customer Details
+        customerIdTextField.text = "123"
+        customerNameTextField.text = "John Doe"
+        customerEmailTextField.text = "pawan@payorc.com"
+        customerMobileTextField.text = "987654321"
+        customerCodeTextField.text = "971"
+
+        // Billing Details
+        billingAddress1TextField.text = "address 1"
+        billingAddress2TextField.text = "address 2"
+        billingCityTextField.text = "Amarpur"
+        billingProvinceTextField.text = "Bihar"
+        billingCountryTextField.text = "IN"
+        billingPinTextField.text = "482008"
+
+        // Shipping Details
+        shippingNameTextField.text = "Pawan Kushwaha"
+        shippingEmailTextField.text = ""
+        shippingCodeTextField.text = "91"
+        shippingMobileTextField.text = "9876543210"
+        shippingAddress1TextField.text = "address 1"
+        shippingAddress2TextField.text = "address 2"
+        shippingCityTextField.text = "Jabalpur"
+        shippingProvinceTextField.text = "Madhya Pradesh"
+        shippingCountryTextField.text = "IN"
+        shippingPinTextField.text = "482005"
+        locationPinTextField.text = "https://location/somepoint"
+        shippingCurrencyTextField.text = "AED"
+        shippingAmountTextField.text = "10"
+
+        // URLs
+        successURLTextField.text = ""
+        cancelURLTextField.text = ""
+        failureURLTextField.text = ""
+        
+        debugPrint("Pre-filled form with sample data")
     }
 }
 

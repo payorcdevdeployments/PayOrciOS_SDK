@@ -8,12 +8,8 @@
 
 import UIKit
 import PayOrciOS_SDK
-//import KRProgressHUD
 
 class ViewController: UIViewController {
-    
-//    private let homeViewModel = PayOrciOS_SDK.HomeViewModel()
-    
     private let fetchButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -48,45 +44,9 @@ class ViewController: UIViewController {
         
     @objc
     private func fetchUserData() {
-        
         let formVC = CreateOrdersFormViewController()
-        formVC.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
-        present(formVC, animated: true, completion: nil)
-
-//        showLoader()
-//        homeViewModel.fetchCreatedOrderDetails { [weak self] (result: Result<CreateOrdersSuccessResponse, Error>) in
-//            self?.hideLoader()  // Hide the loader after completion
-//
-//            switch result {
-//            case .success(let ordersSuccessResponse):
-//                guard let iframeLink = ordersSuccessResponse.iframeLink else {
-//                    self?.showAlert(message: "Invalid response: iframe link not found.")
-//                    return
-//                }
-//                self?.navigateToWebView(with: iframeLink)
-//
-//            case .failure(let error):
-//                self?.showAlert(message: error.localizedDescription)
-//            }
-//        }
+        let navController = UINavigationController(rootViewController: formVC)
+        navController.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
+        present(navController, animated: true, completion: nil)
     }
-    
-//    private func navigateToWebView(with urlString: String) {
-//        let webViewController = WebViewController(urlString: urlString)
-//        navigationController?.pushViewController(webViewController, animated: true)
-//    }
-//    
-//    private func showAlert(message: String) {
-//        PayOrciOS_SDK.AlertHelper.showAlert(on: self, message: message)
-//    }
-//
-//    private func showLoader() {
-//        KRProgressHUD.showOn(self).show()
-//    }
-//
-//    private func hideLoader() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            KRProgressHUD.dismiss()
-//        }
-//    }
 }
