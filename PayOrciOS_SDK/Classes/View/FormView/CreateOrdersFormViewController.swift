@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 // MARK: - ViewController
 public class CreateOrdersFormViewController: UIViewController, UIScrollViewDelegate {
+    
+    private let homeViewModel = HomeViewModel()
     
     // ScrollView and ContentView
     private let scrollView = UIScrollView()
@@ -73,6 +76,10 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         super.viewDidLoad()
         view.backgroundColor = .purple
         setupUI()
+    }
+    
+    public override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     private func setupUI() {
@@ -218,7 +225,6 @@ extension CreateOrdersFormViewController: UITextFieldDelegate {
 }
 
 extension CreateOrdersFormViewController {
-    
     private func createLabelAndTextField(labelText: String, textField: UITextField) -> UIStackView {
         let label = UILabel()
         label.text = labelText
@@ -227,6 +233,7 @@ extension CreateOrdersFormViewController {
         
         textField.borderStyle = .roundedRect
         textField.font = .systemFont(ofSize: 16)
+        textField.placeholder = "Enter \(labelText.lowercased())" // Setting placeholder
         
         let stackView = UIStackView(arrangedSubviews: [label, textField])
         stackView.axis = .vertical
@@ -237,5 +244,59 @@ extension CreateOrdersFormViewController {
     @objc private func handleSubmit() {
         // Handle form submission
         debugPrint("Form submitted")
+        
+        let createOrderDetailsDataRepresent = CreateOrderDetailsDataRepresent(mOrderId: orderIdTextField.text, amount: amountTextField.text, convenienceFee: convenienceFeeTextField.text, quantity: quantityTextField.text, currency: currencyTextField.text, description: descriptionTextField.text)
+        
+        let customerDetailsDataRepresent = CustomerDetailsDataRepresent(mCustomerId: customerIdTextField.text, name: customerNameTextField.text, email: customerEmailTextField.text, mobile: customerMobileTextField.text, code: customerCodeTextField.text)
+
+        let billingDetailsDataRepresent = BillingDetailsDataRepresent(addressLine1: billingAddress1TextField.text, addressLine2: billingAddress2TextField.text, city: billingCityTextField.text, province: billingProvinceTextField.text, country: billingCountryTextField.text, pin: billingPinTextField.text)
+        
+        let shippingDetailsDataRepresent = ShippingDetailsDataRepresent(shippingName: shippingNameTextField.text, shippingEmail: shippingEmailTextField.text, shippingCode: shippingCodeTextField.text, shippingMobile: shippingMobileTextField.text, addressLine1: shippingAddress1TextField.text, addressLine2: shippingAddress2TextField.text, city: shippingCityTextField.text, province: shippingProvinceTextField.text, country: shippingCountryTextField.text, pin: shippingPinTextField.text, locationPin: locationPinTextField.text, shippingCurrency: shippingCurrencyTextField.text, shippingAmount: shippingAmountTextField.text)
+        
+        //location pin field value = "https://location/somepoint"
+
+        let urlsDataRepresent = UrlsDataRepresent(success: successURLTextField.text, cancel: cancelURLTextField.text, failure: failureURLTextField.text)
+        
+        let customDataRepresent = [CustomDataRepresent(alpha: "", beta: "", gamma: "", delta: "", epsilon: "")]
+        
+        let createOrdersPostDataRepresent = CreateOrdersPostDataRepresent(classKey: classNameTextField.text, action: actionTextField.text, captureMethod: captureMethodTextField.text, paymentToken: paymentTokenTextField.text, orderDetails: createOrderDetailsDataRepresent, customerDetails: customerDetailsDataRepresent, billingDetails: billingDetailsDataRepresent, shippingDetails: shippingDetailsDataRepresent, urls: urlsDataRepresent, parameters: customDataRepresent, customData: customDataRepresent)
+
+        let createOrdersPostRepresent = CreateOrdersPostRepresent(data: createOrdersPostDataRepresent)
+
+        showLoader()
+        homeViewModel.fetchCreatedOrderDetails(createOrdersPostRepresent: createOrdersPostRepresent) { (result: Result<CreateOrdersSuccessResponse, Error>) in
+            hideLoader()  // Hide the loader after completion
+
+            switch result {
+            case .success(let ordersSuccessResponse):
+                guard let iframeLink = ordersSuccessResponse.iframeLink else {
+                    showAlert(message: "Invalid response: iframe link not found.")
+                    return
+                }
+                navigateToWebView(with: iframeLink)
+
+            case .failure(let error):
+                showAlert(message: error.localizedDescription)
+            }
+        }
+
+        func navigateToWebView(with urlString: String) {
+            let webViewController = WebViewController(urlString: urlString)
+            navigationController?.pushViewController(webViewController, animated: true)
+        }
+        
+        func showAlert(message: String) {
+            AlertHelper.showAlert(on: self, message: message)
+        }
+
+        func showLoader() {
+            KRProgressHUD.showOn(self).show()
+        }
+
+        func hideLoader() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                KRProgressHUD.dismiss()
+            }
+        }
     }
 }
