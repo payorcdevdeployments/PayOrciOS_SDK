@@ -8,7 +8,9 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+
 ## Requirements
+
 Xcode 12.0+
 iOS   13.0+
 Swift 5.0+
@@ -36,7 +38,7 @@ pod 'PayOrciOS_SDK'
 To install dependencies, run:
 ```bash
 pod install
-
+```
 
 ## Usage
 
@@ -55,6 +57,7 @@ PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://example.c
 ## Author
 
 ramanocs1145
+
 
 ## License
 
