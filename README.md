@@ -42,6 +42,8 @@ pod install
 
 ## Usage
 
+## Step 1:
+
 (see sample Xcode project in /Example)
 
 First, import PayOrciOS_SDK in the required Swift file, such as AppDelegate.
@@ -53,6 +55,124 @@ If it is not provided or is missing, an error will be returned from the API serv
 ```
 PayOrciOS_SDK.Configuration.shared.updateConfigurationDetails("https://example.com/api/", apiVersion: "v1", merchantKey: "", merchantSecret: "", environment: "test")
 ```
+
+## Step 2:
+
+You need to create PayOrcPaymentRequestForm to make payment request. If you want to do the custom UI for PayOrcPaymentRequestForm do it on your side. Once done you will replace with your custom UIViewController instead of using CreateOrdersFormViewController. If you want to keep our existing PayOrcPaymentRequestForm UI, you just check and follow the Example for PayOrciOS_SDK. 
+
+```
+    @objc
+    private func makeNavigatePayOrcPaymentRequestForm() {
+        let formVC = CreateOrdersFormViewController()
+        let navController = UINavigationController(rootViewController: formVC)
+        navController.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
+        present(navController, animated: true, completion: nil)
+    }
+```
+
+## Step 3:
+
+payment request object reference.
+
+```
+PayOrcPaymentRequest(
+    data: Data(
+      className: PayOrcClass.ecom.name.toUpperCase(),
+      action: PayOrcAction.sale.name.toUpperCase(),
+      captureMethod: PayOrcCaptureMethod.manual.name.toUpperCase(),
+      paymentToken: "",
+      orderDetails: OrderDetails(
+        mOrderId: "1234",
+        amount: "500",
+        convenienceFee: "0",
+        quantity: "1",
+        currency: "AED",
+        description: "",
+      ),
+      customerDetails: CustomerDetails(
+        mCustomerId: "123",
+        name: "John Doe",
+        email: "johndoe@example.com",
+        mobile: "987654321",
+        code: "971",
+      ),
+      billingDetails: BillingDetails(
+        addressLine1: "address 1",
+        addressLine2: "address 2",
+        city: "Amarpur",
+        province: "Bihar",
+        country: "IN",
+        pin: "482008",
+      ),
+      shippingDetails: ShippingDetails(
+        shippingName: "John Doe",
+        shippingEmail: "",
+        shippingCode: "91",
+        shippingMobile: "9876543210",
+        addressLine1: "address 1",
+        addressLine2: "address 2",
+        city: "Mumbai",
+        province: "Maharashtra",
+        country: "IN",
+        pin: "482005",
+        locationPin: "https://www.google.com/maps?q=24.227923067092433,80.07790793685352",
+        shippingCurrency: "AED",
+        shippingAmount: "10",
+      ),
+      urls: Urls(
+        success: "",
+        cancel: "",
+        failure: "",
+      ),
+      parameters: [
+        {
+          "alpha": "",
+        },
+        {
+          "beta": "",
+        },
+        {
+          "gamma": "",
+        },
+        {
+          "delta": "",
+        },
+        {
+          "epsilon": "",
+        }
+      ],
+      customData: [
+        {
+          "alpha": "",
+        },
+        {
+          "beta": "",
+        },
+        {
+          "gamma": "",
+        },
+        {
+          "delta": "",
+        },
+        {
+          "epsilon": "",
+        }
+      ],
+    ),
+);
+```
+
+## Note :
+
+All fields are mandatory
+When there is no data for a field you should send it as empty String not pass null
+
+
+## Step 4:
+
+To fetch payment transaction status use p_order_id from create payment response.
+
+
 
 ## Author
 

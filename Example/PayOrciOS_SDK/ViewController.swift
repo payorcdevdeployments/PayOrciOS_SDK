@@ -10,7 +10,7 @@ import UIKit
 import PayOrciOS_SDK
 
 class ViewController: UIViewController {
-    private let fetchButton: UIButton = {
+    private let payOrcPaymentRequestButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .cyan
@@ -30,23 +30,23 @@ class ViewController: UIViewController {
     }
 
     private func setupUI() {
-        fetchButton.layer.cornerRadius = 20
-        fetchButton.layer.masksToBounds = true
-        fetchButton.addTarget(self, action: #selector(fetchUserData), for: .touchUpInside)
+        payOrcPaymentRequestButton.layer.cornerRadius = 20
+        payOrcPaymentRequestButton.layer.masksToBounds = true
+        payOrcPaymentRequestButton.addTarget(self, action: #selector(makeNavigatePayOrcPaymentRequestForm), for: .touchUpInside)
 
-        view.addSubview(fetchButton)
+        view.addSubview(payOrcPaymentRequestButton)
         
         NSLayoutConstraint.activate([
             
-            fetchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            fetchButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            fetchButton.widthAnchor.constraint(equalToConstant: 250),
-            fetchButton.heightAnchor.constraint(equalToConstant: 100)
+            payOrcPaymentRequestButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            payOrcPaymentRequestButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            payOrcPaymentRequestButton.widthAnchor.constraint(equalToConstant: 250),
+            payOrcPaymentRequestButton.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
         
     @objc
-    private func fetchUserData() {
+    private func makeNavigatePayOrcPaymentRequestForm() {
         let formVC = CreateOrdersFormViewController()
         let navController = UINavigationController(rootViewController: formVC)
         navController.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
