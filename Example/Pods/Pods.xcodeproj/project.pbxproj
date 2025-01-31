@@ -78,6 +78,7 @@
 		AC3A794F2D4B2650006800C4 /* CreateOrdersFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */; };
 		AC835AB22D4BEC3C001F0CF4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC835AB12D4BEC3C001F0CF4 /* Constants.swift */; };
 		AC835AB52D4BED18001F0CF4 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC835AB42D4BED0E001F0CF4 /* DeviceInfo.swift */; };
+		ACEAAB642D4C7D6E0009503E /* TransactionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB632D4C7D560009503E /* TransactionDetails.swift */; };
 		AD6DDBFEEE86E6A99B45398DF88A8A93 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A255F011AB4FB8C7B2378BFA37D8F /* KRActivityIndicatorView.swift */; };
 		B23B20F1C3E3BA41870F9137074F1AEE /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E341F2960C351AD578DD0A1437A85 /* MultipartUpload.swift */; };
 		B32BC6D67438172D5B58955EAB85D802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574581962A29DE4FA03BAD8D30FD58FC /* Foundation.framework */; };
@@ -311,6 +312,7 @@
 		AC835AB12D4BEC3C001F0CF4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC835AB42D4BED0E001F0CF4 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		ACCC33F43E7487524B0DF020FD941EAE /* PayOrciOS_SDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = PayOrciOS_SDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ACEAAB632D4C7D560009503E /* TransactionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetails.swift; sourceTree = "<group>"; };
 		AE6C286EBF11A10DC25B6BCAE24B9BEA /* TargetType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetType.swift; path = Sources/Moya/TargetType.swift; sourceTree = "<group>"; };
 		B12D6D5AFF9C25C50691C2CCE7EA02DD /* PayOrciOS_SDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PayOrciOS_SDK-umbrella.h"; sourceTree = "<group>"; };
 		B4D5A96BE309212AB2DB0D814C60EEEC /* KRActivityIndicatorViewStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KRActivityIndicatorViewStyle.swift; path = KRActivityIndicatorView/Classes/KRActivityIndicatorViewStyle.swift; sourceTree = "<group>"; };
@@ -739,6 +741,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		ACEAAB622D4C7D420009503E /* TransactionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				ACEAAB632D4C7D560009503E /* TransactionDetails.swift */,
+			);
+			path = TransactionDetails;
+			sourceTree = "<group>";
+		};
 		BBB89CDD24DF344AB41E992BAD44BD09 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +772,7 @@
 		BF7D16B17228A89C42E36FCBBC210CA6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ACEAAB622D4C7D420009503E /* TransactionDetails */,
 				AC3A79492D4B2400006800C4 /* CreateOrdersFormField */,
 				EDCA8593C5B00228E0C58171963E9100 /* CheckKeysSecret */,
 				97123CA5D78FD9174F6898CB92EB4E95 /* CreateOrders */,
@@ -1267,6 +1278,7 @@
 				834B276820DC27E064DCC6BCE11C9B16 /* PayOrciOS_SDK-dummy.m in Sources */,
 				47727741B3BDBF28DDD4DBF8826368E6 /* WebViewController.swift in Sources */,
 				AC835AB22D4BEC3C001F0CF4 /* Constants.swift in Sources */,
+				ACEAAB642D4C7D6E0009503E /* TransactionDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

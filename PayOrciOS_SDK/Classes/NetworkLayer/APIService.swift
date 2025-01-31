@@ -11,6 +11,7 @@ import Moya
 enum APIService {
     case checkKeysSecret(checkKeysSecretPostDataRepresent :CheckKeysSecretPostDataRepresent)
     case createOrders(createOrdersPostRepresent :CreateOrdersPostRepresent)
+    case orderTransactionDetails(orderId: String)  // Accept orderId as a query parameter
 }
 
 extension APIService: TargetType {
@@ -20,6 +21,8 @@ extension APIService: TargetType {
             return (Configuration.shared.apiVersion ?? "") + "/check/keys-secret"
         case .createOrders:
             return (Configuration.shared.apiVersion ?? "") + "/sdk/orders/create"
+        case .orderTransactionDetails(let orderId):
+            return (Configuration.shared.apiVersion ?? "") + "/open/orders/transaction-details/\(orderId)"
         }
     }
     
@@ -27,6 +30,8 @@ extension APIService: TargetType {
         switch self {
         case .checkKeysSecret, .createOrders:
             return .post
+        case .orderTransactionDetails:
+            return .get
         }
     }
     
@@ -45,12 +50,15 @@ extension APIService: TargetType {
             
             // Encoding the parameters into the request body as JSON
             return .requestJSONEncodable(createOrdersPostRepresent)
+            
+        case .orderTransactionDetails(let orderId):
+            return .requestParameters(parameters: ["p_order_id": orderId], encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .checkKeysSecret(_):
+        case .checkKeysSecret(_), .orderTransactionDetails:
             return [
                 "merchant-key": (Configuration.shared.merchantKey ?? ""),
                 "merchant-secret": (Configuration.shared.merchantSecret ?? ""),

@@ -153,7 +153,7 @@ public struct CreateOrdersSuccessResponse: Codable {
     let pOrderId: Double?
     let mOrderId: String?
     let pRequestId: Double?
-    let orderDreationDate: String?
+    let orderCreationDate: String?
     let amount: String?
     let paymentLink: String?
     public var iframeLink: String?
@@ -165,7 +165,7 @@ public struct CreateOrdersSuccessResponse: Codable {
         case pOrderId = "p_order_id"
         case mOrderId = "m_order_id"
         case pRequestId = "p_request_id"
-        case orderDreationDate = "order_creation_date"
+        case orderCreationDate = "order_creation_date"
         case amount
         case paymentLink = "payment_link"
         case iframeLink = "iframe_link"
