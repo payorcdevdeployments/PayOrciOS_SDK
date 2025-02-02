@@ -27,7 +27,7 @@ public struct TransactionDetailsSuccessResponse: Codable {
     let mOrderId: String?
     let pOrderId: String?
     let pRequestId: Double?
-    let pspRefId: Double?
+    let pspRefId: String?
     let transactionId: String?
     let pspTxnId: String?
     let transactionDate: String?
@@ -38,12 +38,12 @@ public struct TransactionDetailsSuccessResponse: Codable {
     let psp: String?
     let paymentMethod: String?
     let mCustomerId: String?
-    let paymentToken: String?
+    let mPaymentToken: String?
     let paymentMethodData: PaymentMethodDataRepresent?
     let apmName: String?
     let apmIdentifier: String?
     let subMerchantIdentifier: String?
-    let transactionHistory: String?
+    let transactionHistory: [TransactionHistoryDataRepresent]?
     let channel: String?
     let parameters: [CustomDataRepresent]?
     let customData: [CustomDataRepresent]?
@@ -63,7 +63,7 @@ public struct TransactionDetailsSuccessResponse: Codable {
         case psp
         case paymentMethod = "payment_method"
         case mCustomerId = "m_customer_id"
-        case paymentToken = "payment_token"
+        case mPaymentToken = "m_payment_token"
         case paymentMethodData = "payment_method_data"
         case apmName = "apm_name"
         case apmIdentifier = "apm_identifier"
@@ -88,3 +88,20 @@ public struct TransactionDetailsSuccessResponse: Codable {
         }
     }
 }
+
+public struct TransactionHistoryDataRepresent: Codable {
+    let orderId: String?
+    let transactionId: String?
+    let type: String?
+    let status: String?
+    let createdAt: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case orderId = "order_id"
+        case transactionId = "transaction_id"
+        case type
+        case status
+        case createdAt = "created_at"
+    }
+}
+

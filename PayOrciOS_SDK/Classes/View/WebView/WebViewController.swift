@@ -10,12 +10,19 @@ import UIKit
 import WebKit
 import KRProgressHUD
 
+
 public class WebViewController: UIViewController {
     private weak var webView: WKWebView?
     private let urlString: String
+    private let homeViewModel: HomeViewModel
+    private weak var delegate: CreateOrdersFormViewControllerDelegate?
     
-    public init(urlString: String) {
-        self.urlString = urlString
+    public init(aHomeViewModel: HomeViewModel,
+                aUrlString: String,
+                aDelegate: CreateOrdersFormViewControllerDelegate?) {
+        self.homeViewModel = aHomeViewModel
+        self.urlString = aUrlString
+        self.delegate = aDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -144,6 +151,7 @@ extension WebViewController: WKScriptMessageHandler{
             }
         } catch {
             debugPrint("Error parsing JSON: \(error.localizedDescription)")
+            showAlert(message: error.localizedDescription)
         }
     }
     
@@ -151,5 +159,15 @@ extension WebViewController: WKScriptMessageHandler{
         // Perform payment status check here
         debugPrint("Checking payment status for Order ID: \(orderId)")
         // Add your repository logic
+        
+        homeViewModel.fetchOrderTranscationDetails(orderId: orderId) { (result: Result<TransactionDetailsDataResponse, Error>) in
+            switch result {
+            case .success(let orderTranscationDetailsSuccessResponse):
+                self.delegate?.didFetchOrderTransactionDetails(orderTranscationDetailsSuccessResponse)
+
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+        }
     }
 }

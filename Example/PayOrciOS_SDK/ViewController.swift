@@ -48,8 +48,16 @@ class ViewController: UIViewController {
     @objc
     private func makeNavigatePayOrcPaymentRequestForm() {
         let formVC = CreateOrdersFormViewController()
+        formVC.delegate = self
         let navController = UINavigationController(rootViewController: formVC)
         navController.modalPresentationStyle = .fullScreen // Optional: Adjust presentation style
         present(navController, animated: true, completion: nil)
+    }
+}
+
+extension ViewController: CreateOrdersFormViewControllerDelegate {
+    func didFetchOrderTransactionDetails(_ transactionDetails: PayOrciOS_SDK.TransactionDetailsDataResponse) {
+        debugPrint("PayOrciOS_SDK: didFetchOrderTransactionDetails \(transactionDetails)")
+        dismiss(animated: true, completion: nil)
     }
 }

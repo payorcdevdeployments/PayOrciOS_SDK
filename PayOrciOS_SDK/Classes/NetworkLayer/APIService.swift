@@ -21,8 +21,8 @@ extension APIService: TargetType {
             return (Configuration.shared.apiVersion ?? "") + "/check/keys-secret"
         case .createOrders:
             return (Configuration.shared.apiVersion ?? "") + "/sdk/orders/create"
-        case .orderTransactionDetails(let orderId):
-            return (Configuration.shared.apiVersion ?? "") + "/open/orders/transaction-details/\(orderId)"
+        case .orderTransactionDetails(_):
+            return (Configuration.shared.apiVersion ?? "") + "/open/orders/transaction-details"
         }
     }
     

@@ -14,7 +14,8 @@ public class HomeViewModel {
     
     var checkKeysSecretSuccessResponse: CheckKeysSecretSuccessResponse?
     var ordersSuccessResponse: CreateOrdersSuccessResponse?
-    
+    var transactionDetailsDataResponse: TransactionDetailsDataResponse?
+
     var errorMessage: String?
     
     // Make the initializer public
@@ -62,6 +63,20 @@ public class HomeViewModel {
             case .success(let ordersSuccessResponse):
                 self?.ordersSuccessResponse = ordersSuccessResponse
                 completion(.success(ordersSuccessResponse)) // Pass the success response
+                
+            case .failure(let error):
+                self?.errorMessage = error.localizedDescription
+                completion(.failure(error)) // Pass the error for createOrders failure
+            }
+        }
+    }
+    
+    public func fetchOrderTranscationDetails(orderId: String, completion: @escaping (Result<TransactionDetailsDataResponse, Error>) -> Void) {
+        networkManager.request(.orderTransactionDetails(orderId: orderId)) { [weak self] (result: Result<TransactionDetailsDataResponse, Error>) in
+            switch result {
+            case .success(let orderTransactionDetailSuccessResponse):
+                self?.transactionDetailsDataResponse = orderTransactionDetailSuccessResponse
+                completion(.success(orderTransactionDetailSuccessResponse)) // Pass the success response
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription

@@ -9,10 +9,16 @@
 import UIKit
 import KRProgressHUD
 
+public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
+    func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
+}
+
+
 // MARK: - ViewController
 public class CreateOrdersFormViewController: UIViewController, UIScrollViewDelegate {
     
     private let homeViewModel = HomeViewModel()
+    public weak var delegate: CreateOrdersFormViewControllerDelegate?
     
     // ScrollView and ContentView
     private let scrollView = UIScrollView()
@@ -353,7 +359,9 @@ extension CreateOrdersFormViewController {
         }
 
         func navigateToWebView(with urlString: String) {
-            let webViewController = WebViewController(urlString: urlString)
+            let webViewController = WebViewController(aHomeViewModel: homeViewModel,
+                                                      aUrlString: urlString,
+                                                      aDelegate: delegate)
             navigationController?.pushViewController(webViewController, animated: true)
         }
         
