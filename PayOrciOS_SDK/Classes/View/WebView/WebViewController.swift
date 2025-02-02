@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 import KRProgressHUD
 
-
 public class WebViewController: UIViewController {
     private weak var webView: WKWebView?
     private let urlString: String
@@ -32,7 +31,7 @@ public class WebViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .white
         
         // Initially hide the back button
         self.navigationItem.hidesBackButton = true
@@ -67,7 +66,7 @@ public class WebViewController: UIViewController {
         }
         // Show the loader while loading the web view.
         showLoader()
-        self.webView?.load(URLRequest(url: url))
+        webView?.load(URLRequest(url: url))
     }
     
     private func showAlert(message: String) {
@@ -75,8 +74,9 @@ public class WebViewController: UIViewController {
     }
     
     private func showLoader() {
-        KRProgressHUD.set(style: KRProgressHUDStyle.custom(background: UIColor.gray, text: UIColor.black, icon: UIColor.black))
-        KRProgressHUD.showOn(self).show()
+        DispatchQueue.main.async {
+            KRProgressHUD.show()
+        }
     }
     
     private func hideLoader() {
@@ -88,6 +88,10 @@ public class WebViewController: UIViewController {
 
 //MARK: - WKNavigationDelegate
 extension WebViewController: WKNavigationDelegate {
+    public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        showLoader()
+    }
+
     // WKNavigationDelegate methods
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Hide the loader once the page finishes loading

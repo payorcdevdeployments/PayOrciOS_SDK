@@ -19,9 +19,7 @@ public class HomeViewModel {
     var errorMessage: String?
     
     // Make the initializer public
-    public init() {
-        // Initialization code
-    }
+    public init() {}
     
     // Completion handler to pass success or failure response
     public func fetchCreatedOrderDetails(createOrdersPostRepresent :CreateOrdersPostRepresent, completion: @escaping (Result<CreateOrdersSuccessResponse, Error>) -> Void) {
@@ -80,7 +78,7 @@ public class HomeViewModel {
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription
-                completion(.failure(error)) // Pass the error for createOrders failure
+                completion(.failure(error)) // Pass the error for order transaction failure
             }
         }
     }
