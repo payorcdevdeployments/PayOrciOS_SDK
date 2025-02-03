@@ -84,7 +84,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     
     private var fields = [UIStackView]()
     
-    var gifImageView: UIImageView?
+//    var gifImageView: UIImageView?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -390,7 +390,7 @@ extension CreateOrdersFormViewController {
 
         showLoader()
         homeViewModel.fetchCreatedOrderDetails(createOrdersPostRepresent: createOrdersPostRepresent) { (result: Result<CreateOrdersSuccessResponse, Error>) in
-            hideLoader()  // Hide the loader after completion
+            self.hideLoader()  // Hide the loader after completion
 
             switch result {
             case .success(let ordersSuccessResponse):
@@ -416,19 +416,15 @@ extension CreateOrdersFormViewController {
             AlertHelper.showAlert(on: self, message: message)
         }
 
-//        func showLoader() {
-//            KRProgressHUD.showOn(self).show()
-            //DispatchQueue.main.async {
-//                self.showGIFLoader()
-            //}
-//        }
+        func showLoader() {
+            KRProgressHUD.showOn(self).show()
+        }
 
-//        func hideLoader() {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                KRProgressHUD.dismiss()
-//                self.hideGIFLoader()
-//            }
-//        }
+        func hideLoader() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                KRProgressHUD.dismiss()
+            }
+        }
     }
 }
 
