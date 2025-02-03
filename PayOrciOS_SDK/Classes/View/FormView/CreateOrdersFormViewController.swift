@@ -8,7 +8,7 @@
 
 import UIKit
 import KRProgressHUD
-import SwiftyGif
+import SDWebImage
 
 public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
@@ -238,7 +238,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     }
     
     func setupGifLoader() {
-        contentView.addSubview(gifImageView)
+        view.addSubview(gifImageView)
         
         // Centering loader
         NSLayoutConstraint.activate([
@@ -248,14 +248,12 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             gifImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-        do {
-            let gif = try UIImage(gifName: "spinner-loader.gif")
-            gifImageView.setGifImage(gif, loopCount: -1) // Infinite loop
-        } catch {
-            debugPrint("Error loading GIF")
-        }
+        // Load and set the animated image
+        gifImageView.image = UIImage.gifImageWithName("spinner-loader")
         
         gifImageView.isHidden = true  // Initially hidden
+        
+        view.bringSubviewToFront(gifImageView)
     }
     
     private func showLoader() {
@@ -373,90 +371,57 @@ extension CreateOrdersFormViewController {
         let createOrderDetailsDataRepresent = CreateOrderDetailsDataRepresent(mOrderId: orderIdTextField.text, amount: amountTextField.text, convenienceFee: convenienceFeeTextField.text, quantity: quantityTextField.text, currency: currencyTextField.text, description: descriptionTextField.text)
         
         let customerDetailsDataRepresent = CustomerDetailsDataRepresent(mCustomerId: customerIdTextField.text, name: customerNameTextField.text, email: customerEmailTextField.text, mobile: customerMobileTextField.text, code: customerCodeTextField.text)
-
+        
         let billingDetailsDataRepresent = BillingDetailsDataRepresent(addressLine1: billingAddress1TextField.text, addressLine2: billingAddress2TextField.text, city: billingCityTextField.text, province: billingProvinceTextField.text, country: billingCountryTextField.text, pin: billingPinTextField.text)
         
         let shippingDetailsDataRepresent = ShippingDetailsDataRepresent(shippingName: shippingNameTextField.text, shippingEmail: shippingEmailTextField.text, shippingCode: shippingCodeTextField.text, shippingMobile: shippingMobileTextField.text, addressLine1: shippingAddress1TextField.text, addressLine2: shippingAddress2TextField.text, city: shippingCityTextField.text, province: shippingProvinceTextField.text, country: shippingCountryTextField.text, pin: shippingPinTextField.text, locationPin: locationPinTextField.text, shippingCurrency: shippingCurrencyTextField.text, shippingAmount: shippingAmountTextField.text)
         
         //location pin field value = "https://location/somepoint"
-
+        
         let urlsDataRepresent = UrlsDataRepresent(success: successURLTextField.text, cancel: cancelURLTextField.text, failure: failureURLTextField.text)
         
         let customDataRepresent = [CustomDataRepresent(alpha: "", beta: "", gamma: "", delta: "", epsilon: "")]
         
         let createOrdersPostDataRepresent = CreateOrdersPostDataRepresent(classKey: classNameTextField.text, action: actionTextField.text, captureMethod: captureMethodTextField.text, paymentToken: paymentTokenTextField.text, orderDetails: createOrderDetailsDataRepresent, customerDetails: customerDetailsDataRepresent, billingDetails: billingDetailsDataRepresent, shippingDetails: shippingDetailsDataRepresent, urls: urlsDataRepresent, parameters: customDataRepresent, customData: customDataRepresent)
-
+        
         let createOrdersPostRepresent = CreateOrdersPostRepresent(data: createOrdersPostDataRepresent)
-
+        
         showLoader()
         homeViewModel.fetchCreatedOrderDetails(createOrdersPostRepresent: createOrdersPostRepresent) { (result: Result<CreateOrdersSuccessResponse, Error>) in
             self.hideLoader()  // Hide the loader after completion
-
+            
             switch result {
             case .success(let ordersSuccessResponse):
                 guard let iframeLink = ordersSuccessResponse.iframeLink else {
-                    showAlert(message: "Invalid response: iframe link not found.")
+                    self.showAlert(message: "Invalid response: iframe link not found.")
                     return
                 }
-                navigateToWebView(with: iframeLink)
-
+                self.navigateToWebView(with: iframeLink)
+                
             case .failure(let error):
-                showAlert(message: error.localizedDescription)
-            }
-        }
-
-        func navigateToWebView(with urlString: String) {
-            let webViewController = WebViewController(aHomeViewModel: homeViewModel,
-                                                      aUrlString: urlString,
-                                                      aDelegate: delegate)
-            navigationController?.pushViewController(webViewController, animated: true)
-        }
-        
-        func showAlert(message: String) {
-            AlertHelper.showAlert(on: self, message: message)
-        }
-
-        func showLoader() {
-            KRProgressHUD.showOn(self).show()
-        }
-
-        func hideLoader() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                KRProgressHUD.dismiss()
+                self.showAlert(message: error.localizedDescription)
             }
         }
     }
+    
+    func navigateToWebView(with urlString: String) {
+        let webViewController = WebViewController(aHomeViewModel: homeViewModel,
+                                                  aUrlString: urlString,
+                                                  aDelegate: delegate)
+        navigationController?.pushViewController(webViewController, animated: true)
+    }
+    
+    func showAlert(message: String) {
+        AlertHelper.showAlert(on: self, message: message)
+    }
+    
+    //        func showLoader() {
+    //            KRProgressHUD.showOn(self).show()
+    //        }
+    //
+    //        func hideLoader() {
+    //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+    //                KRProgressHUD.dismiss()
+    //            }
+    //        }
 }
-
-//extension CreateOrdersFormViewController {
-//    func showGIFLoader() {
-//        if let gifImage = GIFLoader.loadGIF(named: "spinner-loader") {
-//            let imageView = UIImageView(image: gifImage)
-//            
-//            // Set size for the loader (adjust as needed)
-//            let loaderSize: CGFloat = 100
-//            
-//            // Position it in the center of the screen
-//            imageView.frame = CGRect(x: 0, y: 0, width: loaderSize, height: loaderSize)
-//            imageView.center = view.center
-//            
-//            // Optional: Make sure it’s above other UI elements
-//            imageView.layer.zPosition = 9999
-//            
-//            // Set a tag to identify the loader later
-//            imageView.tag = 999
-//            
-//            // Add the loader to the main view
-//            view.addSubview(imageView)
-//            view.bringSubviewToFront(imageView)
-//            
-//            // Store reference for later removal
-//            gifImageView = imageView
-//        }
-//    }
-//    
-//    func hideGIFLoader() {
-//        gifImageView?.removeFromSuperview()
-//        gifImageView = nil
-//    }
-//}

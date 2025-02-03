@@ -10,11 +10,15 @@ PODS:
   - PayOrciOS_SDK (1.0.0):
     - KRProgressHUD
     - Moya (~> 15.0)
+  - SDWebImage (5.20.0):
+    - SDWebImage/Core (= 5.20.0)
+  - SDWebImage/Core (5.20.0)
 
 DEPENDENCIES:
   - KRProgressHUD
   - Moya (~> 15.0)
   - PayOrciOS_SDK (from `../`)
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -22,6 +26,7 @@ SPEC REPOS:
     - KRActivityIndicatorView
     - KRProgressHUD
     - Moya
+    - SDWebImage
 
 EXTERNAL SOURCES:
   PayOrciOS_SDK:
@@ -33,7 +38,8 @@ SPEC CHECKSUMS:
   KRProgressHUD: d0fb4e72428d312eb6966e84c543ea58fb1efbc7
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   PayOrciOS_SDK: e35c5770ee0a7742a572aa46b91628fe202f177d
+  SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
 
-PODFILE CHECKSUM: a950fc62de75f6eb2b46d066c46df13df0acabc0
+PODFILE CHECKSUM: 9ffe2be3c6504c3eaac83de6f1360242004d3fc5
 
 COCOAPODS: 1.16.2
