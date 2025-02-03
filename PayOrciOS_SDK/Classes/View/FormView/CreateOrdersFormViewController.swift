@@ -8,7 +8,6 @@
 
 import UIKit
 import KRProgressHUD
-import SDWebImage
 
 public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)

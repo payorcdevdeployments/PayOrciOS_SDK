@@ -7,7 +7,6 @@ target 'PayOrciOS_SDK_Example' do
 
   pod 'Moya', '~> 15.0'
   pod "KRProgressHUD"
-  pod 'SDWebImage'
   
   target 'PayOrciOS_SDK_Tests' do
     inherit! :search_paths
