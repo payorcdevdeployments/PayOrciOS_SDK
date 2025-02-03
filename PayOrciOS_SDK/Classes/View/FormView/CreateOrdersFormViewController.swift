@@ -8,6 +8,7 @@
 
 import UIKit
 import KRProgressHUD
+import SwiftyGif
 
 public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
@@ -15,6 +16,12 @@ public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
 
 // MARK: - ViewController
 public class CreateOrdersFormViewController: UIViewController, UIScrollViewDelegate {
+    
+    let gifImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     private let homeViewModel = HomeViewModel()
     public weak var delegate: CreateOrdersFormViewControllerDelegate?
@@ -104,7 +111,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+        
     private func setupUI() {
         
         // Configure ScrollView
@@ -226,6 +233,45 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+        
+        setupGifLoader()
+    }
+    
+    func setupGifLoader() {
+        contentView.addSubview(gifImageView)
+        
+        // Centering loader
+        NSLayoutConstraint.activate([
+            gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gifImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gifImageView.widthAnchor.constraint(equalToConstant: 100),
+            gifImageView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        do {
+            let gif = try UIImage(gifName: "spinner-loader.gif")
+            gifImageView.setGifImage(gif, loopCount: -1) // Infinite loop
+        } catch {
+            debugPrint("Error loading GIF")
+        }
+        
+        gifImageView.isHidden = true  // Initially hidden
+    }
+    
+    private func showLoader() {
+        gifImageView.alpha = 0
+        gifImageView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.gifImageView.alpha = 1
+        }
+    }
+
+    private func hideLoader() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.gifImageView.alpha = 0
+        }) { _ in
+            self.gifImageView.isHidden = true
+        }
     }
     
     @objc private func dismissView() {
@@ -370,51 +416,51 @@ extension CreateOrdersFormViewController {
             AlertHelper.showAlert(on: self, message: message)
         }
 
-        func showLoader() {
-            KRProgressHUD.showOn(self).show()
+//        func showLoader() {
+//            KRProgressHUD.showOn(self).show()
             //DispatchQueue.main.async {
 //                self.showGIFLoader()
             //}
-        }
+//        }
 
-        func hideLoader() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                KRProgressHUD.dismiss()
+//        func hideLoader() {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                KRProgressHUD.dismiss()
 //                self.hideGIFLoader()
-            }
-        }
+//            }
+//        }
     }
 }
 
-extension CreateOrdersFormViewController {
-    func showGIFLoader() {
-        if let gifImage = GIFLoader.loadGIF(named: "spinner-loader") {
-            let imageView = UIImageView(image: gifImage)
-            
-            // Set size for the loader (adjust as needed)
-            let loaderSize: CGFloat = 100
-            
-            // Position it in the center of the screen
-            imageView.frame = CGRect(x: 0, y: 0, width: loaderSize, height: loaderSize)
-            imageView.center = view.center
-            
-            // Optional: Make sure it’s above other UI elements
-            imageView.layer.zPosition = 9999
-            
-            // Set a tag to identify the loader later
-            imageView.tag = 999
-            
-            // Add the loader to the main view
-            view.addSubview(imageView)
-            view.bringSubviewToFront(imageView)
-            
-            // Store reference for later removal
-            gifImageView = imageView
-        }
-    }
-    
-    func hideGIFLoader() {
-        gifImageView?.removeFromSuperview()
-        gifImageView = nil
-    }
-}
+//extension CreateOrdersFormViewController {
+//    func showGIFLoader() {
+//        if let gifImage = GIFLoader.loadGIF(named: "spinner-loader") {
+//            let imageView = UIImageView(image: gifImage)
+//            
+//            // Set size for the loader (adjust as needed)
+//            let loaderSize: CGFloat = 100
+//            
+//            // Position it in the center of the screen
+//            imageView.frame = CGRect(x: 0, y: 0, width: loaderSize, height: loaderSize)
+//            imageView.center = view.center
+//            
+//            // Optional: Make sure it’s above other UI elements
+//            imageView.layer.zPosition = 9999
+//            
+//            // Set a tag to identify the loader later
+//            imageView.tag = 999
+//            
+//            // Add the loader to the main view
+//            view.addSubview(imageView)
+//            view.bringSubviewToFront(imageView)
+//            
+//            // Store reference for later removal
+//            gifImageView = imageView
+//        }
+//    }
+//    
+//    func hideGIFLoader() {
+//        gifImageView?.removeFromSuperview()
+//        gifImageView = nil
+//    }
+//}
