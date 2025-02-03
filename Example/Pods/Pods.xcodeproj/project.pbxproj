@@ -78,6 +78,8 @@
 		AC3A794F2D4B2650006800C4 /* CreateOrdersFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */; };
 		AC835AB22D4BEC3C001F0CF4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC835AB12D4BEC3C001F0CF4 /* Constants.swift */; };
 		AC835AB52D4BED18001F0CF4 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC835AB42D4BED0E001F0CF4 /* DeviceInfo.swift */; };
+		ACA3E18E2D4FCBA60094464D /* spinner-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = ACA3E18D2D4FCBA60094464D /* spinner-loader.gif */; };
+		ACA3E1902D4FCC650094464D /* GIFLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA3E18F2D4FCC5F0094464D /* GIFLoader.swift */; };
 		ACEAAB642D4C7D6E0009503E /* TransactionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEAAB632D4C7D560009503E /* TransactionDetails.swift */; };
 		AD6DDBFEEE86E6A99B45398DF88A8A93 /* KRActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A255F011AB4FB8C7B2378BFA37D8F /* KRActivityIndicatorView.swift */; };
 		B23B20F1C3E3BA41870F9137074F1AEE /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E341F2960C351AD578DD0A1437A85 /* MultipartUpload.swift */; };
@@ -311,6 +313,8 @@
 		AC3A794E2D4B2650006800C4 /* CreateOrdersFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrdersFormViewController.swift; sourceTree = "<group>"; };
 		AC835AB12D4BEC3C001F0CF4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC835AB42D4BED0E001F0CF4 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		ACA3E18D2D4FCBA60094464D /* spinner-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "spinner-loader.gif"; sourceTree = "<group>"; };
+		ACA3E18F2D4FCC5F0094464D /* GIFLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFLoader.swift; sourceTree = "<group>"; };
 		ACCC33F43E7487524B0DF020FD941EAE /* PayOrciOS_SDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = PayOrciOS_SDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ACEAAB632D4C7D560009503E /* TransactionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetails.swift; sourceTree = "<group>"; };
 		AE6C286EBF11A10DC25B6BCAE24B9BEA /* TargetType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetType.swift; path = Sources/Moya/TargetType.swift; sourceTree = "<group>"; };
@@ -611,6 +615,7 @@
 		726C02F5ACC3307989BF01392C7814B9 /* PayOrciOS_SDK */ = {
 			isa = PBXGroup;
 			children = (
+				ACA3E18D2D4FCBA60094464D /* spinner-loader.gif */,
 				AC835AB02D4BEC21001F0CF4 /* Constants */,
 				71398EC7CC7FB3D1DE90BEB515C1DBCB /* Configuration */,
 				ED2C34730D5628A81604552B0BDAA5F7 /* Helpers */,
@@ -853,6 +858,7 @@
 		ED2C34730D5628A81604552B0BDAA5F7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ACA3E18F2D4FCC5F0094464D /* GIFLoader.swift */,
 				29F2480C63053BE0E6EB7BE11141A058 /* AlertHelper.swift */,
 			);
 			name = Helpers;
@@ -1180,6 +1186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA3E18E2D4FCBA60094464D /* spinner-loader.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1278,7 @@
 				E535D793E70297389B010C67D02B297B /* APIService.swift in Sources */,
 				4EE44CA185375F4332E21E319AECFDC3 /* CheckKeysSecretPost.swift in Sources */,
 				E1D4CF79CCA65260DEAD9A433700FAF7 /* Configuration.swift in Sources */,
+				ACA3E1902D4FCC650094464D /* GIFLoader.swift in Sources */,
 				DB96B7A3DDD5648B08BC8476E68A19E7 /* CreateOrdersPost.swift in Sources */,
 				26A078AE78944EA0F12CB21286B38ADD /* HomeViewModel.swift in Sources */,
 				907B2F67D69D354337C3E1F483984E00 /* NetworkManager.swift in Sources */,

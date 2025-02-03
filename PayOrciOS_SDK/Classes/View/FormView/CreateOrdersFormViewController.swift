@@ -13,7 +13,6 @@ public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
 }
 
-
 // MARK: - ViewController
 public class CreateOrdersFormViewController: UIViewController, UIScrollViewDelegate {
     
@@ -77,6 +76,8 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     private let submitButton = UIButton(type: .system)
     
     private var fields = [UIStackView]()
+    
+    var gifImageView: UIImageView?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -371,12 +372,49 @@ extension CreateOrdersFormViewController {
 
         func showLoader() {
             KRProgressHUD.showOn(self).show()
+            //DispatchQueue.main.async {
+//                self.showGIFLoader()
+            //}
         }
 
         func hideLoader() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 KRProgressHUD.dismiss()
+//                self.hideGIFLoader()
             }
         }
+    }
+}
+
+extension CreateOrdersFormViewController {
+    func showGIFLoader() {
+        if let gifImage = GIFLoader.loadGIF(named: "spinner-loader") {
+            let imageView = UIImageView(image: gifImage)
+            
+            // Set size for the loader (adjust as needed)
+            let loaderSize: CGFloat = 100
+            
+            // Position it in the center of the screen
+            imageView.frame = CGRect(x: 0, y: 0, width: loaderSize, height: loaderSize)
+            imageView.center = view.center
+            
+            // Optional: Make sure it’s above other UI elements
+            imageView.layer.zPosition = 9999
+            
+            // Set a tag to identify the loader later
+            imageView.tag = 999
+            
+            // Add the loader to the main view
+            view.addSubview(imageView)
+            view.bringSubviewToFront(imageView)
+            
+            // Store reference for later removal
+            gifImageView = imageView
+        }
+    }
+    
+    func hideGIFLoader() {
+        gifImageView?.removeFromSuperview()
+        gifImageView = nil
     }
 }
