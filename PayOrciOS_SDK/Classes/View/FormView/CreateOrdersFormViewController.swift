@@ -83,9 +83,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     private let submitButton = UIButton(type: .system)
     
     private var fields = [UIStackView]()
-    
-//    var gifImageView: UIImageView?
-    
+        
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -234,7 +232,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         
-        setupGifLoader()
+//        setupGifLoader()
     }
     
     func setupGifLoader() {
@@ -256,21 +254,21 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         view.bringSubviewToFront(gifImageView)
     }
     
-    private func showLoader() {
-        gifImageView.alpha = 0
-        gifImageView.isHidden = false
-        UIView.animate(withDuration: 0.3) {
-            self.gifImageView.alpha = 1
-        }
-    }
-
-    private func hideLoader() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.gifImageView.alpha = 0
-        }) { _ in
-            self.gifImageView.isHidden = true
-        }
-    }
+//    private func showLoader() {
+//        gifImageView.alpha = 0
+//        gifImageView.isHidden = false
+//        UIView.animate(withDuration: 0.3) {
+//            self.gifImageView.alpha = 1
+//        }
+//    }
+//
+//    private func hideLoader() {
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.gifImageView.alpha = 0
+//        }) { _ in
+//            self.gifImageView.isHidden = true
+//        }
+//    }
     
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
@@ -415,13 +413,13 @@ extension CreateOrdersFormViewController {
         AlertHelper.showAlert(on: self, message: message)
     }
     
-    //        func showLoader() {
-    //            KRProgressHUD.showOn(self).show()
-    //        }
-    //
-    //        func hideLoader() {
-    //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-    //                KRProgressHUD.dismiss()
-    //            }
-    //        }
+    func showLoader() {
+        KRProgressHUD.showOn(self).show()
+    }
+
+    func hideLoader() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            KRProgressHUD.dismiss()
+        }
+    }
 }
