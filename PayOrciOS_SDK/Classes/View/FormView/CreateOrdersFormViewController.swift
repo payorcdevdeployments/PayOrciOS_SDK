@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import KRProgressHUD
+//import KRProgressHUD
 
 public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
@@ -231,12 +231,15 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         
-//        setupGifLoader()
+        setupGifLoader()
     }
     
     func setupGifLoader() {
-        view.addSubview(gifImageView)
+        scrollView.addSubview(gifImageView)
         
+        // Load and set the animated image
+        gifImageView.image = UIImage.gifImageWithName("spinner-loader")
+
         // Centering loader
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -245,30 +248,9 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             gifImageView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-        // Load and set the animated image
-        gifImageView.image = UIImage.gifImageWithName("spinner-loader")
-        
         gifImageView.isHidden = true  // Initially hidden
-        
-        view.bringSubviewToFront(gifImageView)
     }
-    
-//    private func showLoader() {
-//        gifImageView.alpha = 0
-//        gifImageView.isHidden = false
-//        UIView.animate(withDuration: 0.3) {
-//            self.gifImageView.alpha = 1
-//        }
-//    }
-//
-//    private func hideLoader() {
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.gifImageView.alpha = 0
-//        }) { _ in
-//            self.gifImageView.isHidden = true
-//        }
-//    }
-    
+        
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
@@ -364,6 +346,7 @@ extension CreateOrdersFormViewController {
     @objc private func handleSubmit() {
         // Handle form submission
         debugPrint("Form submitted")
+        showLoader()
         
         let createOrderDetailsDataRepresent = CreateOrderDetailsDataRepresent(mOrderId: orderIdTextField.text, amount: amountTextField.text, convenienceFee: convenienceFeeTextField.text, quantity: quantityTextField.text, currency: currencyTextField.text, description: descriptionTextField.text)
         
@@ -383,7 +366,6 @@ extension CreateOrdersFormViewController {
         
         let createOrdersPostRepresent = CreateOrdersPostRepresent(data: createOrdersPostDataRepresent)
         
-        showLoader()
         homeViewModel.fetchCreatedOrderDetails(createOrdersPostRepresent: createOrdersPostRepresent) { (result: Result<CreateOrdersSuccessResponse, Error>) in
             self.hideLoader()  // Hide the loader after completion
             
@@ -413,12 +395,19 @@ extension CreateOrdersFormViewController {
     }
     
     func showLoader() {
-        KRProgressHUD.showOn(self).show()
+//        KRProgressHUD.showOn(self).show()
+        self.gifImageView.isHidden = false
+        self.gifImageView.startAnimating()
+        self.gifImageView.animationDuration = 3
+        self.gifImageView.animationRepeatCount = 1
     }
 
     func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            KRProgressHUD.dismiss()
+//            KRProgressHUD.dismiss()
+            self.gifImageView.stopAnimating()
+            self.gifImageView.animationImages = nil
+            self.gifImageView.isHidden = true
         }
     }
 }

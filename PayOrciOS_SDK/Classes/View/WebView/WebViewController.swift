@@ -8,9 +8,17 @@
 
 import UIKit
 import WebKit
-import KRProgressHUD
+//import KRProgressHUD
 
 public class WebViewController: UIViewController {
+    
+    let gifImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    
     private weak var webView: WKWebView?
     private let urlString: String
     private let homeViewModel: HomeViewModel
@@ -57,6 +65,8 @@ public class WebViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         self.webView = webView
+        
+        setupGifLoader()
     }
     
     private func loadURL() {
@@ -74,14 +84,22 @@ public class WebViewController: UIViewController {
     }
     
     private func showLoader() {
+        self.gifImageView.isHidden = false
+        self.gifImageView.startAnimating()
+        self.gifImageView.animationDuration = 3
+        self.gifImageView.animationRepeatCount = 1
+
         DispatchQueue.main.async {
-            KRProgressHUD.show()
+//            KRProgressHUD.show()
         }
     }
     
     private func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            KRProgressHUD.dismiss()
+//            KRProgressHUD.dismiss()
+            self.gifImageView.stopAnimating()
+            self.gifImageView.animationImages = nil
+            self.gifImageView.isHidden = true
         }
     }
 }
@@ -174,4 +192,25 @@ extension WebViewController: WKScriptMessageHandler{
             }
         }
     }
+}
+
+extension WebViewController {
+    
+    func setupGifLoader() {
+        webView?.addSubview(gifImageView)
+        
+        // Load and set the animated image
+        gifImageView.image = UIImage.gifImageWithName("spinner-loader")
+
+        // Centering loader
+        NSLayoutConstraint.activate([
+            gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gifImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gifImageView.widthAnchor.constraint(equalToConstant: 100),
+            gifImageView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        gifImageView.isHidden = true  // Initially hidden
+    }
+
 }

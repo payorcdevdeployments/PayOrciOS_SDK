@@ -58,7 +58,7 @@ class ViewController: UIViewController {
 extension ViewController: CreateOrdersFormViewControllerDelegate {
     func didFetchOrderTransactionDetails(_ transactionDetails: PayOrciOS_SDK.TransactionDetailsDataResponse) {
         debugPrint("PayOrciOS_SDK: didFetchOrderTransactionDetails \(transactionDetails)")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.dismiss(animated: true, completion: nil)
         }
     }
