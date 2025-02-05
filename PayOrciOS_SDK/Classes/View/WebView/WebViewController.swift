@@ -222,31 +222,71 @@ extension WebViewController {
 extension WebViewController {
     
     private func setupTimerLabel() {
-        timerLabel = UILabel()
-        timerLabel.text = "5"
-        timerLabel.textColor = .systemRed
+        timerLabel = UILabel(frame: CGRect(x: 20,
+                                           y: self.view.frame.size.height - 100,
+                                           width: self.view.frame.size.width - 60,
+                                           height: 60))
+//        timerLabel.text = "You will be redirected to the merchant site in 5 seconds."
+//        timerLabel.textColor = .systemRed
         timerLabel.font = UIFont.boldSystemFont(ofSize: 20)
         timerLabel.isHidden = true
+        timerLabel.numberOfLines = 0
         
-        let timerBarButton = UIBarButtonItem(customView: timerLabel)
-        navigationItem.rightBarButtonItem = timerBarButton
+        let fullText = "You will be redirected to the merchant site in 5 seconds."
+        let attributedString = NSMutableAttributedString(string: fullText)
+
+        // Set black color for the general text
+        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: fullText.count))
+
+        // Set red color and bold font for the number "5"
+        if let range = fullText.range(of: "5") {
+            let nsRange = NSRange(range, in: fullText)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: nsRange)
+            attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 22), range: nsRange)
+        }
+
+        timerLabel.attributedText = attributedString
+        
+        webView?.addSubview(timerLabel)
+        
+//        let timerBarButton = UIBarButtonItem(customView: timerLabel)
+//        navigationItem.rightBarButtonItem = timerBarButton
     }
     
     private func startTimer() {
         timerLabel.isHidden = false
         remainingSeconds = 5
-        timerLabel.text = "\(remainingSeconds)"
+        self.updateTimerLabel()
+//        timerLabel.text = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.remainingSeconds -= 1
-            self.timerLabel.text = "\(self.remainingSeconds)"
+            self.updateTimerLabel()
+
+//            self.timerLabel.text = "You will be redirected to the merchant site in \(self.remainingSeconds) seconds."
             
             if self.remainingSeconds <= 0 {
                 self.stopTimer()
                 self.delegate?.didFinishPayment()
             }
         }
+    }
+    
+    private func updateTimerLabel() {
+        let fullText = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
+        let attributedString = NSMutableAttributedString(string: fullText)
+
+        // Set black color for the general text
+        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: fullText.count))
+
+        // Set red color and bold font for the dynamic number
+        if let range = fullText.range(of: "\(remainingSeconds)") {
+            let nsRange = NSRange(range, in: fullText)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: nsRange)
+            attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 22), range: nsRange)
+        }
+        timerLabel.attributedText = attributedString
     }
     
     private func stopTimer() {
