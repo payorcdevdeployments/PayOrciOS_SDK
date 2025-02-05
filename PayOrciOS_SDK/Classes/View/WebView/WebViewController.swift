@@ -234,7 +234,7 @@ extension WebViewController {
     
     private func startTimer() {
         timerLabel.isHidden = false
-        remainingSeconds = 10
+        remainingSeconds = 5
         timerLabel.text = "\(remainingSeconds)"
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
