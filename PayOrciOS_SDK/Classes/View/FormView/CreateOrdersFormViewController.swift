@@ -7,10 +7,10 @@
 //
 
 import UIKit
-//import KRProgressHUD
 
 public protocol CreateOrdersFormViewControllerDelegate: AnyObject {
     func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
+    func didFinishPayment()
 }
 
 // MARK: - ViewController
@@ -395,7 +395,6 @@ extension CreateOrdersFormViewController {
     }
     
     func showLoader() {
-//        KRProgressHUD.showOn(self).show()
         self.gifImageView.isHidden = false
         self.gifImageView.startAnimating()
         self.gifImageView.animationDuration = 3
@@ -404,7 +403,6 @@ extension CreateOrdersFormViewController {
 
     func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            KRProgressHUD.dismiss()
             self.gifImageView.stopAnimating()
             self.gifImageView.animationImages = nil
             self.gifImageView.isHidden = true

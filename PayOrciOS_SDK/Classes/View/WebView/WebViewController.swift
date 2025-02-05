@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-//import KRProgressHUD
 
 public class WebViewController: UIViewController {
     
@@ -18,11 +17,13 @@ public class WebViewController: UIViewController {
         return imageView
     }()
 
-    
     private weak var webView: WKWebView?
     private let urlString: String
     private let homeViewModel: HomeViewModel
     private weak var delegate: CreateOrdersFormViewControllerDelegate?
+    private var timer: Timer?
+    private var remainingSeconds = 10
+    private var timerLabel: UILabel!
     
     public init(aHomeViewModel: HomeViewModel,
                 aUrlString: String,
@@ -43,8 +44,10 @@ public class WebViewController: UIViewController {
         
         // Initially hide the back button
         self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = nil
 
         setupWebView()
+        setupTimerLabel()
         loadURL()
     }
     
@@ -88,19 +91,19 @@ public class WebViewController: UIViewController {
         self.gifImageView.startAnimating()
         self.gifImageView.animationDuration = 3
         self.gifImageView.animationRepeatCount = 1
-
-        DispatchQueue.main.async {
-//            KRProgressHUD.show()
-        }
     }
     
     private func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            KRProgressHUD.dismiss()
             self.gifImageView.stopAnimating()
             self.gifImageView.animationImages = nil
             self.gifImageView.isHidden = true
         }
+    }
+    
+    @objc private func handleBackButton() {
+        stopTimer()
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -146,6 +149,7 @@ extension WebViewController: WKNavigationDelegate {
 //MARK: - WKScriptMessageHandler
 extension WebViewController: WKScriptMessageHandler{
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        self.startTimer()
         guard (message.name == "iOSBridge") else { return }
         if let data = message.body as? String {
             handlePostMessage(data: data)
@@ -168,6 +172,7 @@ extension WebViewController: WKScriptMessageHandler{
                     // Once condition is met, show the back button
                     DispatchQueue.main.async {
                         self.navigationItem.hidesBackButton = false
+                        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(self.handleBackButton))
                     }
                 }
             }
@@ -212,5 +217,41 @@ extension WebViewController {
         
         gifImageView.isHidden = true  // Initially hidden
     }
+}
 
+extension WebViewController {
+    
+    private func setupTimerLabel() {
+        timerLabel = UILabel()
+        timerLabel.text = "5"
+        timerLabel.textColor = .systemRed
+        timerLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        timerLabel.isHidden = true
+        
+        let timerBarButton = UIBarButtonItem(customView: timerLabel)
+        navigationItem.rightBarButtonItem = timerBarButton
+    }
+    
+    private func startTimer() {
+        timerLabel.isHidden = false
+        remainingSeconds = 10
+        timerLabel.text = "\(remainingSeconds)"
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.remainingSeconds -= 1
+            self.timerLabel.text = "\(self.remainingSeconds)"
+            
+            if self.remainingSeconds <= 0 {
+                self.stopTimer()
+                self.delegate?.didFinishPayment()
+            }
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+        timerLabel.isHidden = true
+    }
 }

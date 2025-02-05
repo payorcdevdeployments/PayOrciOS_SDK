@@ -58,8 +58,42 @@ class ViewController: UIViewController {
 extension ViewController: CreateOrdersFormViewControllerDelegate {
     func didFetchOrderTransactionDetails(_ transactionDetails: PayOrciOS_SDK.TransactionDetailsDataResponse) {
         debugPrint("PayOrciOS_SDK: didFetchOrderTransactionDetails \(transactionDetails)")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didFinishPayment() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.dismiss(animated: true, completion: {
+                self.showToast(message: "Payment successfully completed")
+            })
+        }
+    }
+}
+
+extension ViewController {
+    private func showToast(message: String) {
+        let toastLabel = UILabel(frame: CGRect(x: 20,
+                                               y: self.view.frame.size.height - 100,
+                                               width: self.view.frame.size.width - 40,
+                                               height: 40))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont.systemFont(ofSize: 14)
+        toastLabel.text = message
+        toastLabel.alpha = 0.0
+        toastLabel.layer.cornerRadius = 8
+        toastLabel.clipsToBounds = true
+        
+        self.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            toastLabel.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 2.5, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }) { _ in
+                toastLabel.removeFromSuperview()
+            }
         }
     }
 }
