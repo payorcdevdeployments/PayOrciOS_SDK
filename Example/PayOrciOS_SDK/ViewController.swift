@@ -63,7 +63,7 @@ extension ViewController: CreateOrdersFormViewControllerDelegate {
     func didFinishPayment() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.dismiss(animated: true, completion: {
-                self.showToast(message: "Payment successfully completed")
+//                self.showToast(message: "Payment successfully completed")
             })
         }
     }

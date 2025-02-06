@@ -346,6 +346,7 @@ extension CreateOrdersFormViewController {
     @objc private func handleSubmit() {
         // Handle form submission
         debugPrint("Form submitted")
+        submitButton.isUserInteractionEnabled = false
         showLoader()
         
         let createOrderDetailsDataRepresent = CreateOrderDetailsDataRepresent(mOrderId: orderIdTextField.text, amount: amountTextField.text, convenienceFee: convenienceFeeTextField.text, quantity: quantityTextField.text, currency: currencyTextField.text, description: descriptionTextField.text)
@@ -372,18 +373,21 @@ extension CreateOrdersFormViewController {
             switch result {
             case .success(let ordersSuccessResponse):
                 guard let iframeLink = ordersSuccessResponse.iframeLink else {
+                    self.submitButton.isUserInteractionEnabled = true
                     self.showAlert(message: "Invalid response: iframe link not found.")
                     return
                 }
                 self.navigateToWebView(with: iframeLink)
                 
             case .failure(let error):
+                self.submitButton.isUserInteractionEnabled = true
                 self.showAlert(message: error.localizedDescription)
             }
         }
     }
     
     func navigateToWebView(with urlString: String) {
+        self.submitButton.isUserInteractionEnabled = true
         let webViewController = WebViewController(aHomeViewModel: homeViewModel,
                                                   aUrlString: urlString,
                                                   aDelegate: delegate)

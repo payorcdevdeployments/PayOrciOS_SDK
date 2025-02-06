@@ -24,6 +24,7 @@ public class WebViewController: UIViewController {
     private var timer: Timer?
     private var remainingSeconds = 10
     private var timerLabel: UILabel!
+    private var redirectNowButton: UIButton!
     
     public init(aHomeViewModel: HomeViewModel,
                 aUrlString: String,
@@ -105,6 +106,12 @@ public class WebViewController: UIViewController {
         stopTimer()
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func handleRedirectNowButton() {
+        stopTimer()
+        navigationController?.popViewController(animated: true)
+    }
+
 }
 
 //MARK: - WKNavigationDelegate
@@ -222,12 +229,25 @@ extension WebViewController {
 extension WebViewController {
     
     private func setupTimerLabel() {
+        
+        redirectNowButton = UIButton(type: .system)
+        redirectNowButton.frame = CGRect(x: 20,
+                                         y: self.view.frame.size.height - 74,
+                                         width: self.view.frame.size.width - 40,
+                                         height: 44) // (x, y, width, height)
+        redirectNowButton.backgroundColor = UIColor(red: 57/255, green: 131/255, blue: 120/255, alpha: 1) // Corrected color values (0-1 range)
+        redirectNowButton.layer.cornerRadius = 5
+        redirectNowButton.setTitle("Redirect Now", for: .normal)
+        redirectNowButton.setTitleColor(.white, for: .normal)
+        redirectNowButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        redirectNowButton.addTarget(self, action: #selector(handleRedirectNowButton), for: .touchUpInside)
+        redirectNowButton.isHidden = true
+
+        
         timerLabel = UILabel(frame: CGRect(x: 20,
-                                           y: self.view.frame.size.height - 100,
-                                           width: self.view.frame.size.width - 60,
+                                           y: self.view.frame.size.height - 154,
+                                           width: self.view.frame.size.width - 40,
                                            height: 60))
-//        timerLabel.text = "You will be redirected to the merchant site in 5 seconds."
-//        timerLabel.textColor = .systemRed
         timerLabel.font = UIFont.boldSystemFont(ofSize: 20)
         timerLabel.isHidden = true
         timerLabel.numberOfLines = 0
@@ -247,7 +267,9 @@ extension WebViewController {
 
         timerLabel.attributedText = attributedString
         
+        
         webView?.addSubview(timerLabel)
+        webView?.addSubview(redirectNowButton)
         
 //        let timerBarButton = UIBarButtonItem(customView: timerLabel)
 //        navigationItem.rightBarButtonItem = timerBarButton
@@ -255,6 +277,7 @@ extension WebViewController {
     
     private func startTimer() {
         timerLabel.isHidden = false
+        redirectNowButton.isHidden = false
         remainingSeconds = 5
         self.updateTimerLabel()
 //        timerLabel.text = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
@@ -293,5 +316,6 @@ extension WebViewController {
         timer?.invalidate()
         timer = nil
         timerLabel.isHidden = true
+        redirectNowButton.isHidden = true
     }
 }
