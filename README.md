@@ -170,8 +170,43 @@ When there is no data for a field you should send it as empty String not pass nu
 
 ## Step 4:
 
-To fetch payment transaction status use p_order_id from create payment response.
+To fetch payment transaction status use p_order_id from create payment response. And you will get those response object which you can check ViewController class like below,
 
+Regarding fetch payment transaction you can use the below method like in WebViewController.
+
+```
+    private func checkPaymentStatus(orderId: String) {
+        // Perform payment status check here
+        debugPrint("Checking payment status for Order ID: \(orderId)")
+        // Add your repository logic
+        
+        homeViewModel.fetchOrderTranscationDetails(orderId: orderId) { (result: Result<TransactionDetailsDataResponse, Error>) in
+            switch result {
+            case .success(let orderTranscationDetailsSuccessResponse):
+                self.delegate?.didFetchOrderTransactionDetails(orderTranscationDetailsSuccessResponse)
+
+            case .failure(let error):
+                self.showAlert(message: error.localizedDescription)
+            }
+        }
+    }
+```
+
+You can get the TransactionDetailsDataResponse via the below protocol delegate.
+
+```
+    func didFetchOrderTransactionDetails(_ transactionDetails: TransactionDetailsDataResponse)
+```
+
+For Example In ViewController:
+
+```
+extension ViewController: CreateOrdersFormViewControllerDelegate {
+    func didFetchOrderTransactionDetails(_ transactionDetails: PayOrciOS_SDK.TransactionDetailsDataResponse) {
+        debugPrint("PayOrciOS_SDK: didFetchOrderTransactionDetails \(transactionDetails)")
+    }
+}
+```
 
 
 ## Author
