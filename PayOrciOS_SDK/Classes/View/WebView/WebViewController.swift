@@ -24,7 +24,8 @@ public class WebViewController: UIViewController {
     private var timer: Timer?
     private var remainingSeconds = 10
     private var timerLabel: UILabel!
-    private var redirectNowButton: UIButton!
+    private var redirectNowLabel: UILabel!
+//    private var redirectNowButton: UIButton!
     
     public init(aHomeViewModel: HomeViewModel,
                 aUrlString: String,
@@ -230,22 +231,49 @@ extension WebViewController {
     
     private func setupTimerLabel() {
         
-        redirectNowButton = UIButton(type: .system)
-        redirectNowButton.frame = CGRect(x: 20,
-                                         y: self.view.frame.size.height - 74,
-                                         width: self.view.frame.size.width - 40,
-                                         height: 44) // (x, y, width, height)
-        redirectNowButton.backgroundColor = UIColor(red: 57/255, green: 131/255, blue: 120/255, alpha: 1) // Corrected color values (0-1 range)
-        redirectNowButton.layer.cornerRadius = 5
-        redirectNowButton.setTitle("Redirect Now", for: .normal)
-        redirectNowButton.setTitleColor(.white, for: .normal)
-        redirectNowButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        redirectNowButton.addTarget(self, action: #selector(handleRedirectNowButton), for: .touchUpInside)
-        redirectNowButton.isHidden = true
+//        redirectNowButton = UIButton(type: .system)
+//        redirectNowButton.frame = CGRect(x: 20,
+//                                         y: self.view.frame.size.height - 74,
+//                                         width: self.view.frame.size.width - 40,
+//                                         height: 44) // (x, y, width, height)
+//        redirectNowButton.backgroundColor = UIColor(red: 57/255, green: 131/255, blue: 120/255, alpha: 1) // Corrected color values (0-1 range)
+//        redirectNowButton.layer.cornerRadius = 5
+//        redirectNowButton.setTitle("Redirect Now", for: .normal)
+//        redirectNowButton.setTitleColor(.white, for: .normal)
+//        redirectNowButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+//        redirectNowButton.addTarget(self, action: #selector(handleRedirectNowButton), for: .touchUpInside)
+//        redirectNowButton.isHidden = true
+        
+        // Create the Hyperlink Label (Redirect Now)
+        redirectNowLabel = UILabel(frame: CGRect(x: 20,
+                                                 y: self.view.frame.size.height - 84,
+                                                 width: self.view.frame.size.width - 40,
+                                                 height: 34))
+        redirectNowLabel.isHidden = true // Initially hidden
+        redirectNowLabel.isUserInteractionEnabled = true
+        
+        let hyperlinkText = "Redirect Now"
+        let attributedStringForHyperlinkText = NSMutableAttributedString(string: hyperlinkText)
+        
+        // Create a paragraph style for center alignment
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+
+        // Set underline and color to mimic a hyperlink
+        attributedStringForHyperlinkText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: hyperlinkText.count))
+        attributedStringForHyperlinkText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: hyperlinkText.count))
+        attributedStringForHyperlinkText.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .bold), range: NSRange(location: 0, length: hyperlinkText.count))
+        attributedStringForHyperlinkText.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: hyperlinkText.count))
+
+        redirectNowLabel.attributedText = attributedStringForHyperlinkText
+
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackButton))
+        redirectNowLabel.addGestureRecognizer(tapGesture)
 
         
         timerLabel = UILabel(frame: CGRect(x: 20,
-                                           y: self.view.frame.size.height - 154,
+                                           y: self.view.frame.size.height - 144,
                                            width: self.view.frame.size.width - 40,
                                            height: 60))
         timerLabel.font = UIFont.boldSystemFont(ofSize: 20)
@@ -269,7 +297,8 @@ extension WebViewController {
         
         
         webView?.addSubview(timerLabel)
-        webView?.addSubview(redirectNowButton)
+        webView?.addSubview(redirectNowLabel)
+//        webView?.addSubview(redirectNowButton)
         
 //        let timerBarButton = UIBarButtonItem(customView: timerLabel)
 //        navigationItem.rightBarButtonItem = timerBarButton
@@ -277,7 +306,8 @@ extension WebViewController {
     
     private func startTimer() {
         timerLabel.isHidden = false
-        redirectNowButton.isHidden = false
+        redirectNowLabel.isHidden = false
+//        redirectNowButton.isHidden = false
         remainingSeconds = 5
         self.updateTimerLabel()
 //        timerLabel.text = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
@@ -316,6 +346,7 @@ extension WebViewController {
         timer?.invalidate()
         timer = nil
         timerLabel.isHidden = true
-        redirectNowButton.isHidden = true
+        redirectNowLabel.isHidden = true
+//        redirectNowButton.isHidden = true
     }
 }
