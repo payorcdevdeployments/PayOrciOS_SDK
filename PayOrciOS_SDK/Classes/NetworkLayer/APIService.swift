@@ -22,7 +22,7 @@ extension APIService: TargetType {
         case .createOrders:
             return (Configuration.shared.apiVersion ?? "") + "/sdk/orders/create"
         case .orderTransactionDetails(_):
-            return (Configuration.shared.apiVersion ?? "") + "/open/orders/transaction-details"
+            return (Configuration.shared.apiVersion ?? "") + "/sdk/orders/transaction-details"
         }
     }
     
