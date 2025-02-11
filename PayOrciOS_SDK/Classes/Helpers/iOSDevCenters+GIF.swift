@@ -77,25 +77,50 @@ extension UIImage {
     }
     
     class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
+//        var delay = 0.1
+//
+//        let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
+//        let gifProperties: CFDictionary = unsafeBitCast(
+//            CFDictionaryGetValue(cfProperties,
+//                Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()),
+//            to: CFDictionary.self)
+//        
+//        var delayObject: AnyObject = unsafeBitCast(
+//            CFDictionaryGetValue(gifProperties,
+//                Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
+//            to: AnyObject.self)
+//        if delayObject.doubleValue == 0 {
+//            delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
+//                Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
+//        }
+//        
+//        delay = delayObject as! Double
+//        
+//        if delay < 0.1 {
+//            delay = 0.1
+//        }
+//        
+//        return delay
+        
         var delay = 0.1
         
+        // Fetch the properties of the image at the given index
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
-        let gifProperties: CFDictionary = unsafeBitCast(
-            CFDictionaryGetValue(cfProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()),
-            to: CFDictionary.self)
         
-        var delayObject: AnyObject = unsafeBitCast(
-            CFDictionaryGetValue(gifProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
-            to: AnyObject.self)
-        if delayObject.doubleValue == 0 {
-            delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
+        // Retrieve the GIF-specific properties dictionary
+        guard let gifProperties = unsafeBitCast(CFDictionaryGetValue(cfProperties,
+            Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()), to: CFDictionary.self) as? [CFString: Any] else {
+                return delay
         }
         
-        delay = delayObject as! Double
+        // Try to retrieve the delay time, falling back to a default value if necessary
+        if let delayObject = gifProperties[kCGImagePropertyGIFUnclampedDelayTime] as? Double, delayObject > 0 {
+            delay = delayObject
+        } else if let delayObject = gifProperties[kCGImagePropertyGIFDelayTime] as? Double, delayObject > 0 {
+            delay = delayObject
+        }
         
+        // Ensure delay is not too short
         if delay < 0.1 {
             delay = 0.1
         }

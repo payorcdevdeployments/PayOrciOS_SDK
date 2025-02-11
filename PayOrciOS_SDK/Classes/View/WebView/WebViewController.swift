@@ -219,8 +219,8 @@ extension WebViewController {
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gifImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gifImageView.widthAnchor.constraint(equalToConstant: 100),
-            gifImageView.heightAnchor.constraint(equalToConstant: 100)
+            gifImageView.widthAnchor.constraint(equalToConstant: 56),
+            gifImageView.heightAnchor.constraint(equalToConstant: 56)
         ])
         
         gifImageView.isHidden = true  // Initially hidden
