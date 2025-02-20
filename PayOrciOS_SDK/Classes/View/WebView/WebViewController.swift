@@ -160,7 +160,10 @@ extension WebViewController: WKNavigationDelegate {
 //MARK: - WKScriptMessageHandler
 extension WebViewController: WKScriptMessageHandler{
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        self.startTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            self.startTimer()
+        }
+
         guard (message.name == "iOSBridge") else { return }
         if let data = message.body as? String {
             handlePostMessage(data: data)
