@@ -23,8 +23,11 @@ public class WebViewController: UIViewController {
     private weak var delegate: CreateOrdersFormViewControllerDelegate?
     private var timer: Timer?
     private var remainingSeconds = 10
+    
+    private var bottomView: UIView!
     private var timerLabel: UILabel!
     private var redirectNowLabel: UILabel!
+    
 //    private var redirectNowButton: UIButton!
     
     public init(aHomeViewModel: HomeViewModel,
@@ -219,8 +222,8 @@ extension WebViewController {
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gifImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gifImageView.widthAnchor.constraint(equalToConstant: 56),
-            gifImageView.heightAnchor.constraint(equalToConstant: 56)
+            gifImageView.widthAnchor.constraint(equalToConstant: 50),
+            gifImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         gifImageView.isHidden = true  // Initially hidden
@@ -244,10 +247,17 @@ extension WebViewController {
 //        redirectNowButton.addTarget(self, action: #selector(handleRedirectNowButton), for: .touchUpInside)
 //        redirectNowButton.isHidden = true
         
+        bottomView = UIView(frame: CGRect(x: 0,
+                                          y: self.view.frame.size.height - 124,
+                                          width: self.view.frame.size.width,
+                                          height: 124))
+        bottomView.backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
+        bottomView.isHidden = true
+        
         // Create the Hyperlink Label (Redirect Now)
         redirectNowLabel = UILabel(frame: CGRect(x: 20,
-                                                 y: self.view.frame.size.height - 84,
-                                                 width: self.view.frame.size.width - 40,
+                                                 y: bottomView.frame.size.height - 54,
+                                                 width: bottomView.frame.size.width - 40,
                                                  height: 34))
         redirectNowLabel.isHidden = true // Initially hidden
         redirectNowLabel.isUserInteractionEnabled = true
@@ -273,8 +283,8 @@ extension WebViewController {
 
         
         timerLabel = UILabel(frame: CGRect(x: 20,
-                                           y: self.view.frame.size.height - 144,
-                                           width: self.view.frame.size.width - 40,
+                                           y: bottomView.frame.size.height - 114,
+                                           width: bottomView.frame.size.width - 40,
                                            height: 60))
         timerLabel.font = UIFont.boldSystemFont(ofSize: 20)
         timerLabel.isHidden = true
@@ -295,9 +305,12 @@ extension WebViewController {
 
         timerLabel.attributedText = attributedString
         
+        view.addSubview(bottomView)
+        view.bringSubviewToFront(bottomView)
+
+        bottomView.addSubview(timerLabel)
+        bottomView.addSubview(redirectNowLabel)
         
-        webView?.addSubview(timerLabel)
-        webView?.addSubview(redirectNowLabel)
 //        webView?.addSubview(redirectNowButton)
         
 //        let timerBarButton = UIBarButtonItem(customView: timerLabel)
@@ -305,6 +318,7 @@ extension WebViewController {
     }
     
     private func startTimer() {
+        bottomView.isHidden = false
         timerLabel.isHidden = false
         redirectNowLabel.isHidden = false
 //        redirectNowButton.isHidden = false
@@ -347,6 +361,20 @@ extension WebViewController {
         timer = nil
         timerLabel.isHidden = true
         redirectNowLabel.isHidden = true
+        bottomView.isHidden = true
 //        redirectNowButton.isHidden = true
     }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // Ensure bottomView is on top
+        view.bringSubviewToFront(bottomView)
+        
+        // Adjust webView scroll insets
+        let bottomInset = bottomView.frame.height
+        webView?.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+        webView?.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+    }
+
 }

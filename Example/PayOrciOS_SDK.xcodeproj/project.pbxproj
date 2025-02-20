@@ -479,7 +479,7 @@
 			baseConfigurationReference = 3DFBF5C3C4433573336C9391 /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8V7YYSWJX5;
 				INFOPLIST_FILE = PayOrciOS_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -498,7 +498,7 @@
 			baseConfigurationReference = 4178DA945341C3E653AD8C17 /* Pods-PayOrciOS_SDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8V7YYSWJX5;
 				INFOPLIST_FILE = PayOrciOS_SDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

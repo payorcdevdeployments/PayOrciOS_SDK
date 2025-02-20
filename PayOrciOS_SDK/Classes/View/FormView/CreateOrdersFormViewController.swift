@@ -244,8 +244,8 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gifImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gifImageView.widthAnchor.constraint(equalToConstant: 56),
-            gifImageView.heightAnchor.constraint(equalToConstant: 56)
+            gifImageView.widthAnchor.constraint(equalToConstant: 50),
+            gifImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         gifImageView.isHidden = true  // Initially hidden
