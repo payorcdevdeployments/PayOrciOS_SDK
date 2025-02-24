@@ -346,9 +346,14 @@ extension WebViewController {
     private func updateTimerLabel() {
         let fullText = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
         let attributedString = NSMutableAttributedString(string: fullText)
+        
+        // Create a paragraph style for center alignment
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
 
         // Set black color for the general text
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: fullText.count))
+        attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: fullText.count))
 
         // Set red color and bold font for the dynamic number
         if let range = fullText.range(of: "\(remainingSeconds)") {
