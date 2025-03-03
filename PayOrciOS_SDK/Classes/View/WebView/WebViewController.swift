@@ -16,7 +16,7 @@ public class WebViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     private weak var webView: WKWebView?
     private let urlString: String
     private let homeViewModel: HomeViewModel
@@ -27,8 +27,6 @@ public class WebViewController: UIViewController {
     private var bottomView: UIView!
     private var timerLabel: UILabel!
     private var redirectNowLabel: UILabel!
-    
-//    private var redirectNowButton: UIButton!
     
     public init(aHomeViewModel: HomeViewModel,
                 aUrlString: String,
@@ -50,7 +48,7 @@ public class WebViewController: UIViewController {
         // Initially hide the back button
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
-
+        
         setupWebView()
         setupTimerLabel()
         loadURL()
@@ -115,7 +113,7 @@ public class WebViewController: UIViewController {
         stopTimer()
         navigationController?.popViewController(animated: true)
     }
-
+    
 }
 
 //MARK: - WKNavigationDelegate
@@ -123,7 +121,7 @@ extension WebViewController: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         showLoader()
     }
-
+    
     // WKNavigationDelegate methods
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Hide the loader once the page finishes loading
@@ -163,7 +161,7 @@ extension WebViewController: WKScriptMessageHandler{
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             self.startTimer()
         }
-
+        
         guard (message.name == "iOSBridge") else { return }
         if let data = message.body as? String {
             handlePostMessage(data: data)
@@ -205,7 +203,7 @@ extension WebViewController: WKScriptMessageHandler{
             switch result {
             case .success(let orderTranscationDetailsSuccessResponse):
                 self.delegate?.didFetchOrderTransactionDetails(orderTranscationDetailsSuccessResponse)
-
+                
             case .failure(let error):
                 self.showAlert(message: error.localizedDescription)
             }
@@ -220,7 +218,7 @@ extension WebViewController {
         
         // Load and set the animated image
         gifImageView.image = UIImage.gifImageWithName("spinner-loader")
-
+        
         // Centering loader
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -236,19 +234,6 @@ extension WebViewController {
 extension WebViewController {
     
     private func setupTimerLabel() {
-        
-//        redirectNowButton = UIButton(type: .system)
-//        redirectNowButton.frame = CGRect(x: 20,
-//                                         y: self.view.frame.size.height - 74,
-//                                         width: self.view.frame.size.width - 40,
-//                                         height: 44) // (x, y, width, height)
-//        redirectNowButton.backgroundColor = UIColor(red: 57/255, green: 131/255, blue: 120/255, alpha: 1) // Corrected color values (0-1 range)
-//        redirectNowButton.layer.cornerRadius = 5
-//        redirectNowButton.setTitle("Redirect Now", for: .normal)
-//        redirectNowButton.setTitleColor(.white, for: .normal)
-//        redirectNowButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        redirectNowButton.addTarget(self, action: #selector(handleRedirectNowButton), for: .touchUpInside)
-//        redirectNowButton.isHidden = true
         
         bottomView = UIView(frame: CGRect(x: 0,
                                           y: self.view.frame.size.height - 124,
@@ -271,19 +256,19 @@ extension WebViewController {
         // Create a paragraph style for center alignment
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-
+        
         // Set underline and color to mimic a hyperlink
         attributedStringForHyperlinkText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: hyperlinkText.count))
         attributedStringForHyperlinkText.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: hyperlinkText.count))
         attributedStringForHyperlinkText.addAttribute(.font, value: UIFont.systemFont(ofSize: 18, weight: .bold), range: NSRange(location: 0, length: hyperlinkText.count))
         attributedStringForHyperlinkText.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: hyperlinkText.count))
-
+        
         redirectNowLabel.attributedText = attributedStringForHyperlinkText
-
-
+        
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackButton))
         redirectNowLabel.addGestureRecognizer(tapGesture)
-
+        
         
         timerLabel = UILabel(frame: CGRect(x: 20,
                                            y: bottomView.frame.size.height - 114,
@@ -295,46 +280,37 @@ extension WebViewController {
         
         let fullText = "You will be redirected to the merchant site in 5 seconds."
         let attributedString = NSMutableAttributedString(string: fullText)
-
+        
         // Set black color for the general text
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: fullText.count))
-
+        
         // Set red color and bold font for the number "5"
         if let range = fullText.range(of: "5") {
             let nsRange = NSRange(range, in: fullText)
             attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: nsRange)
             attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 22), range: nsRange)
         }
-
+        
         timerLabel.attributedText = attributedString
         
         view.addSubview(bottomView)
         view.bringSubviewToFront(bottomView)
-
+        
         bottomView.addSubview(timerLabel)
         bottomView.addSubview(redirectNowLabel)
-        
-//        webView?.addSubview(redirectNowButton)
-        
-//        let timerBarButton = UIBarButtonItem(customView: timerLabel)
-//        navigationItem.rightBarButtonItem = timerBarButton
     }
     
     private func startTimer() {
         bottomView.isHidden = false
         timerLabel.isHidden = false
         redirectNowLabel.isHidden = false
-//        redirectNowButton.isHidden = false
         remainingSeconds = 5
         self.updateTimerLabel()
-//        timerLabel.text = "You will be redirected to the merchant site in \(remainingSeconds) seconds."
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.remainingSeconds -= 1
             self.updateTimerLabel()
-
-//            self.timerLabel.text = "You will be redirected to the merchant site in \(self.remainingSeconds) seconds."
             
             if self.remainingSeconds <= 0 {
                 self.stopTimer()
@@ -350,11 +326,11 @@ extension WebViewController {
         // Create a paragraph style for center alignment
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-
+        
         // Set black color for the general text
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 0, length: fullText.count))
         attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: fullText.count))
-
+        
         // Set red color and bold font for the dynamic number
         if let range = fullText.range(of: "\(remainingSeconds)") {
             let nsRange = NSRange(range, in: fullText)
@@ -370,12 +346,11 @@ extension WebViewController {
         timerLabel.isHidden = true
         redirectNowLabel.isHidden = true
         bottomView.isHidden = true
-//        redirectNowButton.isHidden = true
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         // Ensure bottomView is on top
         view.bringSubviewToFront(bottomView)
         
@@ -384,5 +359,5 @@ extension WebViewController {
         webView?.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
         webView?.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
     }
-
+    
 }

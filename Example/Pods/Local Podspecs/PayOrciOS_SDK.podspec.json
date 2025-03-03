@@ -1,6 +1,6 @@
 {
   "name": "PayOrciOS_SDK",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "summary": "A short description of PayOrciOS_SDK.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/ramanocs1145/PayOrciOS_SDK",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ramanocs1145/PayOrciOS_SDK.git",
-    "branch": "main"
+    "tag": "1.0.6"
   },
   "platforms": {
     "ios": "13.0"
@@ -23,9 +23,6 @@
   "dependencies": {
     "Moya": [
       "~> 15.0"
-    ],
-    "KRProgressHUD": [
-
     ]
   },
   "swift_version": "5.0"

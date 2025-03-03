@@ -77,12 +77,12 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
     private let successURLTextField = UITextField()
     private let cancelURLTextField = UITextField()
     private let failureURLTextField = UITextField()
-
+    
     // Submit Button
     private let submitButton = UIButton(type: .system)
     
     private var fields = [UIStackView]()
-        
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -92,23 +92,23 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
             .font: UIFont.systemFont(ofSize: 16, weight: .regular) // Set font size and weight
         ]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-
+        
         // Add Pre-Fill button
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pre-Fill", style: .plain, target: self, action: #selector(preFillData))
         
         // Add "Dismiss" button to the left
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissView))
-
+        
         // Ensure back button only shows chevron icon
         navigationItem.backButtonTitle = ""  // Hide text, keep chevron
-
+        
         setupUI()
     }
     
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-        
+    
     private func setupUI() {
         
         // Configure ScrollView
@@ -239,7 +239,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         
         // Load and set the animated image
         gifImageView.image = UIImage.gifImageWithName("spinner-loader")
-
+        
         // Centering loader
         NSLayoutConstraint.activate([
             gifImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -250,7 +250,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         
         gifImageView.isHidden = true  // Initially hidden
     }
-        
+    
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
@@ -261,7 +261,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         actionTextField.text = "SALE"
         captureMethodTextField.text = "MANUAL"
         paymentTokenTextField.text = ""
-
+        
         // Order Details
         orderIdTextField.text = "1234"
         amountTextField.text = "100"
@@ -269,14 +269,14 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         quantityTextField.text = "2"
         currencyTextField.text = "AED"
         descriptionTextField.text = ""
-
+        
         // Customer Details
         customerIdTextField.text = "123"
         customerNameTextField.text = "John Doe"
         customerEmailTextField.text = "pawan@payorc.com"
         customerMobileTextField.text = "987654321"
         customerCodeTextField.text = "971"
-
+        
         // Billing Details
         billingAddress1TextField.text = "address 1"
         billingAddress2TextField.text = "address 2"
@@ -284,7 +284,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         billingProvinceTextField.text = "Bihar"
         billingCountryTextField.text = "IN"
         billingPinTextField.text = "482008"
-
+        
         // Shipping Details
         shippingNameTextField.text = "Pawan Kushwaha"
         shippingEmailTextField.text = ""
@@ -299,7 +299,7 @@ public class CreateOrdersFormViewController: UIViewController, UIScrollViewDeleg
         locationPinTextField.text = "https://location/somepoint"
         shippingCurrencyTextField.text = "AED"
         shippingAmountTextField.text = "10"
-
+        
         // URLs
         successURLTextField.text = ""
         cancelURLTextField.text = ""
@@ -404,7 +404,7 @@ extension CreateOrdersFormViewController {
         self.gifImageView.animationDuration = 3
         self.gifImageView.animationRepeatCount = 1
     }
-
+    
     func hideLoader() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.gifImageView.stopAnimating()

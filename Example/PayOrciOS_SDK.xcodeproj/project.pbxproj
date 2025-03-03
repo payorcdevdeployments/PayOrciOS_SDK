@@ -12,8 +12,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		739EB25052E55A7FCAE26422 /* Pods_PayOrciOS_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633E9B983E130E9CFEC00E80 /* Pods_PayOrciOS_SDK_Example.framework */; };
-		78F73E6181AC1E83CD6BF834 /* Pods_PayOrciOS_SDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DB5197C36039CA5BB5C44C /* Pods_PayOrciOS_SDK_Tests.framework */; };
+		761441C09C76588ABBD82F31 /* Pods_PayOrciOS_SDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 064BCD1BDC244900202053E1 /* Pods_PayOrciOS_SDK_Example.framework */; };
+		9EF36D2068B139C05794B69F /* Pods_PayOrciOS_SDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DF931CC04FBF2FC8373C97 /* Pods_PayOrciOS_SDK_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,11 +27,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DFBF5C3C4433573336C9391 /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4178DA945341C3E653AD8C17 /* Pods-PayOrciOS_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Example.release.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		064BCD1BDC244900202053E1 /* Pods_PayOrciOS_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayOrciOS_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1704BB5B66C36804D982F5AB /* Pods-PayOrciOS_SDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Example.release.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		22F3092C6C01B36BADEE66B5 /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Tests/Pods-PayOrciOS_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A75AE5EC2DB39FD39111FEC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		538F9DC0A9845719CE495603 /* PayOrciOS_SDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PayOrciOS_SDK.podspec; path = ../PayOrciOS_SDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		58DB5197C36039CA5BB5C44C /* Pods_PayOrciOS_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayOrciOS_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* PayOrciOS_SDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayOrciOS_SDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,9 +41,9 @@
 		607FACE51AFB9204008FA782 /* PayOrciOS_SDK_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PayOrciOS_SDK_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		633E9B983E130E9CFEC00E80 /* Pods_PayOrciOS_SDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayOrciOS_SDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF4878C82D50E150027A2B23 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Tests/Pods-PayOrciOS_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CA5CB3F666A85B6937BD7A1A /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Tests/Pods-PayOrciOS_SDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		985DADCE3CD6926ADFD679BB /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C5DF931CC04FBF2FC8373C97 /* Pods_PayOrciOS_SDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayOrciOS_SDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF477F0FEBA6A355FA10310 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayOrciOS_SDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-PayOrciOS_SDK_Tests/Pods-PayOrciOS_SDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EDA7252FD6259E12ABC5D1F8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				739EB25052E55A7FCAE26422 /* Pods_PayOrciOS_SDK_Example.framework in Frameworks */,
+				761441C09C76588ABBD82F31 /* Pods_PayOrciOS_SDK_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,13 +60,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78F73E6181AC1E83CD6BF834 /* Pods_PayOrciOS_SDK_Tests.framework in Frameworks */,
+				9EF36D2068B139C05794B69F /* Pods_PayOrciOS_SDK_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E532BC023D7F55BDFD72ED8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				064BCD1BDC244900202053E1 /* Pods_PayOrciOS_SDK_Example.framework */,
+				C5DF931CC04FBF2FC8373C97 /* Pods_PayOrciOS_SDK_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +84,7 @@
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				7CABBB34BB1E8931FCD7A4F1 /* Pods */,
-				FE6E3F898F667AB73158A50C /* Frameworks */,
+				0E532BC023D7F55BDFD72ED8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,21 +148,12 @@
 		7CABBB34BB1E8931FCD7A4F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3DFBF5C3C4433573336C9391 /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */,
-				4178DA945341C3E653AD8C17 /* Pods-PayOrciOS_SDK_Example.release.xcconfig */,
-				CA5CB3F666A85B6937BD7A1A /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */,
-				AF4878C82D50E150027A2B23 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */,
+				985DADCE3CD6926ADFD679BB /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */,
+				1704BB5B66C36804D982F5AB /* Pods-PayOrciOS_SDK_Example.release.xcconfig */,
+				22F3092C6C01B36BADEE66B5 /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */,
+				CBF477F0FEBA6A355FA10310 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FE6E3F898F667AB73158A50C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				633E9B983E130E9CFEC00E80 /* Pods_PayOrciOS_SDK_Example.framework */,
-				58DB5197C36039CA5BB5C44C /* Pods_PayOrciOS_SDK_Tests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,11 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK_Example" */;
 			buildPhases = (
-				263C9689B942EC67E80AA8EB /* [CP] Check Pods Manifest.lock */,
+				EB93459FCEC7531A45AD9522 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				17D3B25FC4471204CE41919C /* [CP] Embed Pods Frameworks */,
+				66EB740EEF6741C8BE640F5E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,7 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PayOrciOS_SDK_Tests" */;
 			buildPhases = (
-				7A891A8732E8FE91D4C153FE /* [CP] Check Pods Manifest.lock */,
+				3EE77239071B6682AD6D1500 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -259,55 +259,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17D3B25FC4471204CE41919C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PayOrciOS_SDK/PayOrciOS_SDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayOrciOS_SDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		263C9689B942EC67E80AA8EB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PayOrciOS_SDK_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7A891A8732E8FE91D4C153FE /* [CP] Check Pods Manifest.lock */ = {
+		3EE77239071B6682AD6D1500 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -323,6 +275,50 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PayOrciOS_SDK_Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66EB740EEF6741C8BE640F5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PayOrciOS_SDK/PayOrciOS_SDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PayOrciOS_SDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PayOrciOS_SDK_Example/Pods-PayOrciOS_SDK_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB93459FCEC7531A45AD9522 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PayOrciOS_SDK_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -476,7 +472,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DFBF5C3C4433573336C9391 /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */;
+			baseConfigurationReference = 985DADCE3CD6926ADFD679BB /* Pods-PayOrciOS_SDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 5;
@@ -495,7 +491,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4178DA945341C3E653AD8C17 /* Pods-PayOrciOS_SDK_Example.release.xcconfig */;
+			baseConfigurationReference = 1704BB5B66C36804D982F5AB /* Pods-PayOrciOS_SDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 5;
@@ -514,7 +510,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA5CB3F666A85B6937BD7A1A /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */;
+			baseConfigurationReference = 22F3092C6C01B36BADEE66B5 /* Pods-PayOrciOS_SDK_Tests.debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -539,7 +535,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF4878C82D50E150027A2B23 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */;
+			baseConfigurationReference = CBF477F0FEBA6A355FA10310 /* Pods-PayOrciOS_SDK_Tests.release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (

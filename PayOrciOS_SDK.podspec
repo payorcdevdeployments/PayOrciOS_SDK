@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PayOrciOS_SDK'
-  s.version          = '1.0.6'
+  s.version          = '1.0.7'
   s.summary          = 'A short description of PayOrciOS_SDK.'
 
 # This description is used to generate tags and improve search results.
@@ -44,6 +44,5 @@ TODO: Add long description of the pod here.
   
   # Add multiple dependencies here
   s.dependency 'Moya', '~> 15.0'
-  s.dependency 'KRProgressHUD'
 
 end
