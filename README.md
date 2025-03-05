@@ -22,7 +22,6 @@ This project uses the following dependencies:
 
 Dependency    Version
 Moya             15.0
-KRProgressHUD    3.4.4
 
 
 ## Installation
