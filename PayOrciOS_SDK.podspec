@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PayOrciOS_SDK'
-  s.version          = '1.0.8'
+  s.version          = '1.1.0'
   s.summary          = 'A short description of PayOrciOS_SDK.'
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/ramanocs1145/PayOrciOS_SDK'
+  s.homepage         = 'https://github.com/payorcdevdeployments/PayOrciOS_SDK'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'ramanocs1145' => 'p.ramanathan2971@gmail.com' }
-  s.source           = { :git => 'https://github.com/ramanocs1145/PayOrciOS_SDK.git', :tag => s.version } # :tag => s.version.to_s , :branch => 'main'
+  s.author           = { 'payorcdevdeployments' => 'payorcdevdeployments@gmail.com' }
+  s.source           = { :git => 'https://github.com/payorcdevdeployments/PayOrciOS_SDK.git', :tag => s.version } # :tag => s.version.to_s , :branch => 'main'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '13.0'
