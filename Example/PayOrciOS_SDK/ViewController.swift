@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  PayOrciOS_SDK
 //
-//  Created by ramanocs1145 on 01/23/2025.
-//  Copyright (c) 2025 ramanocs1145. All rights reserved.
+//  Created by PayOrc on 01/23/2025.
+//  Copyright (c) 2025 PayOrc. All rights reserved.
 //
 
 import UIKit
